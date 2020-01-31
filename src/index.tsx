@@ -1,9 +1,15 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from "react"
+import * as ReactDOM from "react-dom"
+import { Game } from "./game/Game"
 
-import { Hello } from "./components/Hello";
+import { GameView } from "./components/GameView"
+
+
+const game = new Game();
+(window as any).game = game; // For debug purposes
+console.log(game);
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
-    document.getElementById("example")
+    <GameView game={game} />,
+    document.getElementById("react-hook")
 );

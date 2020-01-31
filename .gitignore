@@ -1,7 +1,8 @@
 #folder
 node_modules/*
 training/*
-dist/*
+dist/**/*.js
+dist/**/*.map
 
 #file endings
 .tern-project

@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Game } from "../game/Game"
 import { Timer } from "../game/Timer"
+import { AddButton } from "./AddButton";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -25,7 +26,11 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         return(
             <div>
                 This is GameView! Last tick: {game.tick}.
+                <div>
+                <AddButton></AddButton>
+                </div>
             </div>
+            
         );
     }
 }

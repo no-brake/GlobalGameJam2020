@@ -1,0 +1,14 @@
+#folder
+node_modules/*
+training/*
+
+#file endings
+.tern-project
+.env
+.gitmodules
+
+#files
+package-lock.json
+*.cert
+*.key
+*.crt

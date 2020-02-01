@@ -146,6 +146,30 @@ export class Game {
 			}
 		});
 
+		var left = this.items.filter((obj) => obj.name === "left");
+		var right = this.items.filter((obj) => obj.name === "right");
+		var benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.isLoading === false && obj && obj.items.filter(i => i == null).length == 2);
+
+		if (Math.min(left.length, right.length, benches.length) > 0) {
+			//get first element available of each piece an workbench
+			const leftPiece = left[0];
+			const rightPiece = right[0];
+			benches[0].items = [leftPiece, rightPiece];
+			
+			//remove pieces from available resources
+			const indexLeft = this.items.indexOf(leftPiece, 0);
+			const indexRight = this.items.indexOf(rightPiece, 0);
+			if (indexLeft > -1 && indexRight > -1) {
+				this.items.splice(indexLeft, 1);
+				this.items.splice(indexRight, 1);
+			}
+
+			//add pieces to workbench and activate progressbar
+			benches[0].isLoading = true;
+			benches[0].progressBarTimeStamp = Date.now();
+			benches[0].progressBarVisibility = true;
+		}
+
 		this.tick++;
 	}
 }

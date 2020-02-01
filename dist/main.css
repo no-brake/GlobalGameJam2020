@@ -147,6 +147,8 @@ progress[value] {
     width: 64px;
     height: 64px;
 
+    z-index: 999;
+
     background-color: dodgerblue;
     border: 2px dashed skyblue;
 }

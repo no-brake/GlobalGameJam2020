@@ -5,3 +5,8 @@ Sounds:
 Wrench - YourFriendJesse https://freesound.org/people/YourFriendJesse/sounds/131200/
 Pop - DuffyBro https://freesound.org/people/DuffyBro/sounds/319107/
 Cha ching - creek23 https://freesound.org/people/creek23/sounds/75235/
+GameAudio - https://freesound.org/people/GameAudio/sounds/220173/
+
+Fonts:
+
+Iconian Fonts - https://www.dafont.com/de/galaxy-1.font

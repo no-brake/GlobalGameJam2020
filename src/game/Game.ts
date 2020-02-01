@@ -5,6 +5,7 @@ import { Item } from "./Item";
 interface SaveState {
 	tick: number;
 	workbenches: Workbench[];
+	items: Item[];
 }
 
 export class Game {
@@ -43,7 +44,8 @@ export class Game {
 	public saveGame() {
 		const saveState: SaveState = {
 			tick: this.tick,
-			workbenches: this.workbenchs
+			workbenches: this.workbenchs,
+			items: this.items
 		}
 
 		localStorage.setItem("saveGame", JSON.stringify(saveState));
@@ -54,6 +56,7 @@ export class Game {
 		
 		this.tick = saveState.tick;
 		this.workbenchs = saveState.workbenches;
+		this.items = saveState.items;
 
 		console.log("Game state restored (Tick " + this.tick + ")");
 	}

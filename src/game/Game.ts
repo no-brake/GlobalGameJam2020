@@ -1,6 +1,7 @@
 import { Timer } from "./Timer";
 import { Workbench } from "./Workbench";
 import { Item } from "./Item";
+import { combinationLookup } from "./CombinationLookupTable";
 
 interface SaveState {
 	tick: number;
@@ -25,8 +26,7 @@ export class Game {
 	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
 	public items: Item[] = [];
 
-	public combinationTracker: {[left: string]: {[right: string]: number}};
-	
+	public combinationTracker: {[left: string]: {[right: string]: boolean}};	
 
 	public constructor() {
 
@@ -143,13 +143,13 @@ export class Game {
 	}
 
 	public combineItems(leftItem: Item, rightItem: Item) {
-		let value = 100;
-		if (this.combinationTracker[leftItem.name]) {
-			const obj = this.combinationTracker[leftItem.name];
+		const value = combinationLookup[leftItem.name][rightItem.name];
+		if (!this.combinationTracker[leftItem.name]) {
+			this.combinationTracker[leftItem.name] = {};
 
-			if (obj[rightItem.name]) {
-				value = obj[rightItem.name];
-			}
+		}
+		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
+			this.combinationTracker[leftItem.name][rightItem.name] = true;
 		}
 
 		this.addCoins(value);
@@ -180,7 +180,7 @@ export class Game {
 				randomX = -100;
 			}
 
-			let item: Item = new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
+			let item: Item = new Item(selectedItem, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
 			items.push(item);
 		}
 		return items;

@@ -18,10 +18,12 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
         const level = this.props.game.workbenchs[this.props.index].level;
         let body = <BuildWorkBenchButton game={this.props.game} index={this.props.index}></BuildWorkBenchButton>;
 
+        const isProgressBarVisible = this.props.game.workbenchs[this.props.index].progressBarVisibility;
+
         if (level > 0) {
             body =
                 <div className="grid-container">
-                    <ProgressBar game={this.props.game} index={this.props.index}></ProgressBar>
+                    { isProgressBarVisible ? <ProgressBar game={this.props.game} index={this.props.index}></ProgressBar> : null}
                     <img className="centered-image workbench-image" src={"public/assets/items/400x400-workbench-level0" + level + ".png"} alt="Workbench Level 1" />
                     <div className="icon-grid-container">
                     <UpgradeWorkbenchButton game={this.props.game} index={this.props.index}></UpgradeWorkbenchButton>

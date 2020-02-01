@@ -103,15 +103,25 @@ export class Game {
 
 	public update() {
 
+
 		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			this.items.push(new Item("name", Math.random() * 300));
 			this.lastItemPushed = Date.now();
 		}
 
+
 		if (Date.now() - this.lastItemDeleted > 10000) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}
+
+		this.workbenchs.forEach(element => {
+			if (element.progressBarTimeStamp > 0) {
+				if (element.progressValue < 100) {
+					element.progressValue = (Date.now() - element.progressBarTimeStamp) / 100;
+				}
+			}
+		});
 	}
 }

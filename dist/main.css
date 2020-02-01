@@ -68,15 +68,6 @@
     background-image: url("./assets/icons/plus_hover.png");
 }
 
-@-webkit-keyframes animate-stripes {
-    100% { background-position: -100px 0px; }
- }
- 
- @keyframes animate-stripes {
-    100% { background-position: -100px 0px; }
- }
-
-
 progress[value] {
     /* Reset the default appearance */
     -webkit-appearance: none;
@@ -98,13 +89,10 @@ progress[value] {
   
       border-radius: 2px; 
       background-size: 35px 20px, 100% 100%, 100% 100%;
-      -webkit-animation: animate-stripes 5s linear infinite;
-        animation: animate-stripes 5s linear infinite;
   }
 
 
 .progressbar {
-    visibility: visible;
     position: relative;
     top: 75px;
 }

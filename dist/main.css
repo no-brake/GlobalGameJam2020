@@ -55,9 +55,9 @@
     background-image: url("./assets/icons/plus.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
-    width: 48px;
-    height: 48px;
+    background-size: 48px;
+    width: 96px;
+    height: 96px;
     align-self: center;
     justify-self: center;
     margin: auto;
@@ -66,6 +66,11 @@
 
 .build-workbench-button:hover {
     background-image: url("./assets/icons/plus_hover.png");
+}
+
+.progressbar {
+    visibility: visible;
+    
 }
 
 .upgrade-workbench-button {

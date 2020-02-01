@@ -25,6 +25,9 @@ export class Game {
 	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
 	public items: Item[] = [];
 
+	public combinationTracker: {[left: string]: {[right: string]: number}};
+	
+
 	public constructor() {
 
 		for (let i = 0; i < this.workbenchs.length; i++) {
@@ -38,6 +41,8 @@ export class Game {
 
 		this.coins = 0;
 		this.coinUpdates = [];
+
+		this.combinationTracker = {};
 
 		this.pause = false;
 
@@ -137,6 +142,19 @@ export class Game {
 		item.posY += item.speedY;
 	}
 
+	public combineItems(leftItem: Item, rightItem: Item) {
+		let value = 100;
+		if (this.combinationTracker[leftItem.name]) {
+			const obj = this.combinationTracker[leftItem.name];
+
+			if (obj[rightItem.name]) {
+				value = obj[rightItem.name];
+			}
+		}
+
+		this.addCoins(value);
+	}
+
 	public randomNumber(min: number, max: number) {
 		return (Math.random() * (max - min) + min);
 	}
@@ -198,8 +216,8 @@ export class Game {
 					workbench.progressValue = ((Date.now() - workbench.progressBarTimeStamp) / 100) * workbench.level * 2;
 				}
 				else {
+					this.combineItems(workbench.items[0], workbench.items[1]);
 					workbench.finished();
-					this.addCoins(100);
 				}
 			}
 		});

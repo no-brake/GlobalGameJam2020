@@ -213,6 +213,39 @@ progress[value] {
     background-image: url("./assets/icons/plus_hover.png");
 }
 
+.plus-one-button {
+    background-image: url("./assets/icons/50x50-plusone-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 96px;
+    height: 96px;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.plus-one-button:hover {
+    background-image: url("./assets/icons/50x50-plusone-icon-hover.png");
+}
+
+.sell-button {
+    background-image: url("./assets/icons/50x50-sell-icon.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 96px;
+    height: 96px;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.sell-button:hover {
+    background-image: url("./assets/icons/50x50-sell-icon-hover.png");
+}
+
+
 .upgrade-workbench-button {
     background-image: url("./assets/icons/up.png");
     background-repeat: no-repeat;

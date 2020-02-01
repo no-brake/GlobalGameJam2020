@@ -10,6 +10,7 @@ export class BuildWorkBenchButton extends React.Component<BuildWorkbenchButtonPr
     
     buttonOnClick() {
         this.props.game.workbenchs[this.props.index].level = 1;
+        this.props.game.workbenchs[this.props.index].progressValue = 50 ;   
     }
     
     render() {

@@ -55,9 +55,9 @@
     background-image: url("./assets/icons/plus.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
-    width: 48px;
-    height: 48px;
+    background-size: 48px;
+    width: 96px;
+    height: 96px;
     align-self: center;
     justify-self: center;
     margin: auto;
@@ -66,6 +66,35 @@
 
 .build-workbench-button:hover {
     background-image: url("./assets/icons/plus_hover.png");
+}
+
+progress[value] {
+    /* Reset the default appearance */
+    -webkit-appearance: none;
+     appearance: none;
+
+    width: 175px;
+    height: 20px;
+  }
+
+  progress[value]::-webkit-progress-value {
+    background-image:
+        -webkit-linear-gradient(-45deg, 
+                                transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                                rgba(0,0, 0, .1) 66%, transparent 66%),
+        -webkit-linear-gradient(top, 
+                                 rgba(255, 255, 255, .25), 
+                                 rgba(0, 0, 0, .25)),
+        -webkit-linear-gradient(left, rgb(205, 255, 200), rgb(0, 255, 21));
+  
+      border-radius: 2px; 
+      background-size: 35px 20px, 100% 100%, 100% 100%;
+  }
+
+
+.progressbar {
+    position: relative;
+    top: 75px;
 }
 
 .upgrade-workbench-button {

@@ -29,10 +29,18 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         // const deltaTime = Timer.deltaTime;
 
         return (
-            <div>
+            <div className="game-view">
                 <ItemManager game={this.props.game}></ItemManager>
                 <span className="white-text">This is GameView! Last tick: {game.tick}.</span>
                 <CoinView game={game}></CoinView>
+                <ItemBucket></ItemBucket>
+                <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
+                <button onClick={() => game.saveGame()}>Save Game</button>
+                <button onClick={() => game.loadGame()}>Load Game</button>
+                <BackgroundAudio></BackgroundAudio>
+            
+            <div className="workbench-area">
+
                 <table className="workbench-table">
                     <tbody>
                         <tr>
@@ -63,13 +71,9 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
                 </div> */}
-                <ItemBucket></ItemBucket>
-                <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
-                <button onClick={() => game.saveGame()}>Save Game</button>
-                <button onClick={() => game.loadGame()}>Load Game</button>
-                <BackgroundAudio></BackgroundAudio>
-            </div>
 
+            </div>
+            </div>
         );
     }
 }

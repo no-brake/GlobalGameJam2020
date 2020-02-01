@@ -1,9 +1,17 @@
 .base-button {
-    padding: 15px;
-    border: 1px solid transparent;
+    padding: 20px;
+    border: 2px solid transparent;
+    background-color: transparent;
+    color: black;
+}
+
+.base-button:hover {
+    border: 2px solid yellowgreen;
+    background-color: rgba(126, 126, 126, 0.041);
+    color: rgba(0, 0, 0, 0.596);
 }
 
 .build-workbench-button {
-    color: brown;
+    color: black; 
 }
 

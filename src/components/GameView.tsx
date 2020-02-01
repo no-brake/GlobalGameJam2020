@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Game } from "../game/Game"
 import { Timer } from "../game/Timer"
-import { AddButton } from "./AddButton";
+import { AddButton } from "./BuildWorkbench";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }

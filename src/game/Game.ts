@@ -18,7 +18,7 @@ export class Game {
 	public maxItems: number;
 
 	public coins: number;
-	public coinUpdates: {amount: number, offsetX: number, offsetY: number, endOfLife: number}[];
+	public coinUpdates: { amount: number, offsetX: number, offsetY: number, endOfLife: number }[];
 
 	public externalRedraw: () => void;
 
@@ -86,7 +86,7 @@ export class Game {
 		const offsetX = Math.random() * 200 - 100;
 		const offsetY = Math.random() * 40 - 20;
 		const endOfLife = Date.now() + 5000;
-		this.coinUpdates.push({amount, offsetX, offsetY, endOfLife});
+		this.coinUpdates.push({ amount, offsetX, offsetY, endOfLife });
 	}
 
 	public gameStart() {
@@ -199,6 +199,8 @@ export class Game {
 			} else {
 				this.move(this.items[i]);
 			}
+		}
+		
 		var left = this.items.filter((obj) => obj.name === "left");
 		var right = this.items.filter((obj) => obj.name === "right");
 		var benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.isLoading === false && obj && obj.items.filter(i => i == null).length == 2);
@@ -208,7 +210,7 @@ export class Game {
 			const leftPiece = left[0];
 			const rightPiece = right[0];
 			benches[0].items = [leftPiece, rightPiece];
-			
+
 			//remove pieces from available resources
 			const indexLeft = this.items.indexOf(leftPiece, 0);
 			const indexRight = this.items.indexOf(rightPiece, 0);

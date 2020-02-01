@@ -27,11 +27,21 @@ body {
     justify-content: flex-end;
     align-content: center;
 }
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 .spawner {
+    animation: rotation 20s infinite linear;
+
     position: absolute;
-    top: -300px;
-    left: -750px;
+    top: -350px;
+    left: -850px;
     background-image: url(./assets/background/gg20-spawn-img.png);
     background-position: center;
     height: 100%;
@@ -124,10 +134,6 @@ body {
 
 .base-button:disabled {
     background-color: lightgray;
-}
-
-.base-button:hover:enabled {
-
 }
 
 progress {

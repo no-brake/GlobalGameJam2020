@@ -4,6 +4,8 @@ import { Timer } from "../game/Timer"
 import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
 import { ItemManager } from "./ItemManager";
+import { ItemBucket } from "./ItemBucket";
+import { BackgroundAudio } from "./BackgroundAudio";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -29,7 +31,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div>
                 <ItemManager game={this.props.game}></ItemManager>
                 This is GameView! Last tick: {game.tick}.
-                <div>
+                <div className="workbench-grid-container">
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={2}></WorkbenchView>
@@ -37,9 +39,11 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
                 </div>
+                <ItemBucket></ItemBucket>
                 <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
                 <button onClick={() => game.saveGame()}>Save Game</button>
                 <button onClick={() => game.loadGame()}>Load Game</button>
+                <BackgroundAudio></BackgroundAudio>
             </div>
 
         );

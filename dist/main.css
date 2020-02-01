@@ -6,40 +6,37 @@ body {
     background-color: black;
     height: 100%;
     margin: 0px;
-
     user-select: none;
     overflow: hidden;
 }
 
-#react-hook{
+#react-hook {
     min-height: 100% !important;
     height: auto;
 }
 
 .game-view {
     min-height: 100vh;
-
     display: flex;
     background-repeat: no-repeat;
     background-image: url(./assets/background/gg20-links-bg.png);
     background-size: auto;
     background-position: bottom;
-    
     justify-content: flex-end;
     align-content: center;
 }
+
 @keyframes rotation {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
 
 .spawner {
     animation: rotation 50s infinite linear;
-
     position: absolute;
     top: -350px;
     left: -850px;
@@ -75,9 +72,9 @@ body {
     margin: auto;
     width: 250px;
     height: 250px;
-  }
+}
 
-  .grid-container {
+.grid-container {
     display: grid;
     grid-template-columns: 250px;
     align-items: center;
@@ -85,8 +82,6 @@ body {
     justify-self: center;
     align-self: center;
     height: 250px;
-    
-    
 }
 
 /* .workbench-grid-container {
@@ -142,6 +137,7 @@ progress {
     height: 20px;
     border-radius: 5px;
 }
+
 progress::-webkit-progress-bar {
     border: 1px solid black;
     height: 20px;
@@ -167,9 +163,9 @@ progress[value] {
     border: 2px solid transparent;
     height: 18px;
     border-radius: 5px;
-  }
+}
 
-  /* progress[value]::-webkit-progress-value {
+/* progress[value]::-webkit-progress-value {
     background-image:
         -webkit-linear-gradient(-45deg, 
                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
@@ -264,7 +260,7 @@ progress[value] {
 
 .base-button:disabled:hover {
     border: none;
-    background-color:transparent;
+    background-color: transparent;
     color: transparent;
 }
 
@@ -274,7 +270,7 @@ progress[value] {
 
 .upgrade-workbench-button:disabled:hover {
     background-image: none;
-    background-color:transparent;
+    background-color: transparent;
     color: transparent;
 }
 
@@ -283,14 +279,12 @@ progress[value] {
     display: block;
     width: 150px;
     height: 150px;
-
     z-index: 999;
 }
 
 .workbench-item {
     position: absolute;
     display: block;
-
     width: 70px;
     height: auto;
 }
@@ -325,7 +319,6 @@ progress[value] {
     position: absolute;
     width: 320px;
     height: 160px;
-
     top: 60px;
     right: 580px;
     display: flex;
@@ -339,11 +332,11 @@ progress[value] {
     width: 160px;
 }
 
-.action_button:hover{
+.action_button:hover {
     background-color: lightcoral;
 }
 
-.action_button:active{
+.action_button:active {
     background-color: lightsalmon;
 }
 
@@ -355,7 +348,6 @@ progress[value] {
     position: absolute;
     animation: floatingCoin 1.6s ease-out;
     animation-fill-mode: forwards;
-
     color: yellow;
     font-size: 20pt;
 }
@@ -374,6 +366,5 @@ progress[value] {
 .item-manager {
     max-width: 100%;
     max-height: 100%;
-
     overflow: hidden;
 }

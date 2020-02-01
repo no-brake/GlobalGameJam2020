@@ -23,13 +23,13 @@ export class Game {
 
 	public externalRedraw: () => void;
 
-	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
+	public workbenchs: Workbench[] = new Array<Workbench>(6);
 	public items: Item[] = [];
 
 	public combinationTracker: {[left: string]: {[right: string]: boolean}};	
+	public newCombinations: {left: string, right: string}[] = [];
 
 	public constructor() {
-
 		for (let i = 0; i < this.workbenchs.length; i++) {
 			this.workbenchs[i] = new Workbench(this);
 		}
@@ -137,7 +137,6 @@ export class Game {
 	}
 
 	public move(item: Item) {
-
 		item.posX += item.speedX;
 		item.posY += item.speedY;
 	}
@@ -150,6 +149,7 @@ export class Game {
 		}
 		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
 			this.combinationTracker[leftItem.name][rightItem.name] = true;
+			this.newCombinations.push({left: leftItem.name, right: rightItem.name});
 		}
 
 		this.addCoins(value);
@@ -162,7 +162,7 @@ export class Game {
 	public createItem(numberOfItems: number) {
 		let items: Item[] = [];
 		for (let i = 0; i < numberOfItems; i++) {
-			const availableItems = ["banane", "bear", "croissant", "einhorn", "laptop", "pizza", "uboot", "uhr"];
+			const availableItems = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr"];
 			const partTypes = ["left", "right"];
 			const rotationDirection = ["normal", "reverse"];
 			const rotationSpeed = Math.random() * 100;

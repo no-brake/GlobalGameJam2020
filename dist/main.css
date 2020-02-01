@@ -6,9 +6,9 @@ body {
     display: flex;
     background-repeat: no-repeat;
     background-image: url(./assets/background/gg20-links-bg.png);
-    background-size: cover;
-    background-position: center;
-    height: 100%;
+    background-size: auto;
+    background-position: bottom;
+    
     justify-content: flex-end;
     align-content: center;
 }
@@ -278,7 +278,7 @@ progress[value] {
     position: relative;
 }
 
-.workbench.drag-over {
+.drag-over {
     outline: 5px dashed orange;
 }
 
@@ -286,3 +286,13 @@ progress[value] {
     color: white;
 }
 
+.trashcan {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+
+    top: 60px;
+    right: 620px;
+
+    background-color: lightpink;
+}

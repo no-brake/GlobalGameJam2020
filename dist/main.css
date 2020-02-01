@@ -1,13 +1,40 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: 200px;
+
+
+.workbench-table {
+    border: 3px solid rgba(1, 212, 231, 1);
     align-items: center;
     justify-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.workbench-table td {
+    border: 3px solid rgba(1, 212, 231, 1);
+    /* padding: 8px; */
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
     margin: auto;
+    width: 250px;
+    height: 250px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 250px;
+    align-items: center;
+    justify-items: center;
+    justify-self: center;
+    align-self: center;
+    height: 250px;
+    
     
 }
 
-.workbench-grid-container {
+/* .workbench-grid-container {
     display: grid;
     grid-template-columns: 250px 250px;
     grid-template-rows: 250px 250px 250px;
@@ -17,7 +44,7 @@
     justify-items: center;
     margin: auto;
     border: 3px solid rgba(1, 212, 231, 1);    
-}
+} */
 
 .icon-grid-container {
     display: grid;
@@ -146,6 +173,39 @@ progress[value]::-webkit-progress-value {
 .repair-button:hover:enabled {
     background-image: url("./assets/icons/repair_hover.png");
 }
+
+.repair-button:disabled, button[disabled] {
+    background-image: none;
+}
+
+.repair-button:disabled:hover {
+    background-image: none;
+}
+
+.base-button:disabled {
+    padding: 20px;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+}
+
+.base-button:disabled:hover {
+    border: none;
+    background-color:transparent;
+    color: transparent;
+}
+
+.upgrade-workbench-button:disabled {
+    background-image: none;
+}
+
+.upgrade-workbench-button:disabled:hover {
+    background-image: none;
+    background-color:transparent;
+    color: transparent;
+}
+
+
 
 .item {
     position: absolute;

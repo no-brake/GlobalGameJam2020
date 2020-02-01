@@ -17,7 +17,15 @@ export class UpgradeWorkbenchButton extends React.Component<UpgradeWorkbenchButt
     }
     
     render() {
-        return <button className="base-button upgrade-workbench-button" onClick={() => this.buttonOnClick()} ></button>;
+            let body = <button className="base-button upgrade-workbench-button" onClick={() => this.buttonOnClick()} ></button>;
+            
+            const level = this.props.game.workbenchs[this.props.index].level
+
+            if (level >= 3) {
+                body = <button disabled className="base-button upgrade-workbench-button" onClick={() => this.buttonOnClick()} ></button>;
+            }
+        
+        return <div>{body}</div>;
     }
 
 

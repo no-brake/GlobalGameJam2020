@@ -33,6 +33,27 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <ItemManager game={this.props.game}></ItemManager>
                 <span className="white-text">This is GameView! Last tick: {game.tick}.</span>
                 <CoinView game={game}></CoinView>
+                <table className="workbench-table">
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={0}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={1}></WorkbenchView></td>
+                    </tr>
+
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={2}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={3}></WorkbenchView></td>
+                    </tr>
+
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={4}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={5}></WorkbenchView></td>
+                    </tr>
+
+                </table>
+
+                {/* <div className="workbench-grid-container">
+                    <
+                <CoinView game={game}></CoinView>
                 <div className="workbench-grid-container">
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
@@ -40,7 +61,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     <WorkbenchView game={this.props.game} index={3}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
-                </div>
+                </div> */}
                 <ItemBucket></ItemBucket>
                 <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
                 <button onClick={() => game.saveGame()}>Save Game</button>

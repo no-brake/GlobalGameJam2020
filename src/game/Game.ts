@@ -138,18 +138,15 @@ export class Game {
 	}
 
 	public randomNumber(min: number, max: number) {
-		return (Math.random() * (max - min) + min) / 10;
+		return (Math.random() * (max - min) + min);
 	}
 
-	public update() {
-		const now = Date.now();
-
-		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			const partTypes = ["left", "right"];
+	public createItem(){
+		const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
-			let randomX: number = 100 + (this.randomNumber(0, 5)) * 500;
-			let randomY: number = 100 + (this.randomNumber(0, 5)) * 500;
+			let randomX: number = (this.randomNumber(0, 150));
+			let randomY: number = (this.randomNumber(0, 150));
 
 			if (Math.random() >= 0.5) {
 				randomY = -100;
@@ -158,8 +155,14 @@ export class Game {
 			}
 
 			let test: Item = new Item(partType, randomX, randomY, partType);
+			return test;
+	}
 
-			this.items.push(test);
+	public update() {
+		const now = Date.now();
+
+		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
+			this.items.push(this.createItem());
 
 			this.lastItemPushed = Date.now();
 		}
@@ -201,8 +204,8 @@ export class Game {
 		
 		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
 		if (benches.length > 0) {
-			const left = this.items.filter((obj) => obj.name === "left" && !obj.isDragging);
-			const right = this.items.filter((obj) => obj.name === "right" && !obj.isDragging);
+			const left = this.items.filter((obj) => obj.partType === "left" && !obj.isDragging);
+			const right = this.items.filter((obj) => obj.partType === "right" && !obj.isDragging);
 
 			if (Math.min(left.length, right.length) > 0) {
 				//get first element available of each piece an workbench

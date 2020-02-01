@@ -316,6 +316,17 @@ progress[value] {
     background-color: lightpink;
 }
 
+.itemcreator {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+
+    top: 60px;
+    right: 440px;
+
+    background-color: lightpink;
+}
+
 .floating-coin {
     position: absolute;
     animation: floatingCoin 1.6s ease-out;

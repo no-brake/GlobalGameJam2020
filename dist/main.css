@@ -1,13 +1,21 @@
 body {
-    background-repeat: repeat;
-    background-image: url(./assets/background/gg20-links-bg.png);
+    background-color: black;
 }
 
-.workbench-area {
-    float: right;
-    margin-bottom: 40px;
-    margin-right: 40px;
+.game-view {
+    display: flex;
+    background-repeat: no-repeat;
+    background-image: url(./assets/background/gg20-links-bg.png);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    justify-content: flex-end;
+    align-content: center;
 }
+
+/* .workbench-area {
+    
+} */
 
 .workbench-table {
     border: 3px solid rgba(1, 212, 231, 1);

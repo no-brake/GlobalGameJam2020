@@ -120,17 +120,6 @@ export class Game {
 			this.lastItemDeleted = Date.now();
 		}
 
-<<<<<<< HEAD
-		this.workbenchs.forEach(element => {
-			if (element.progressBarTimeStamp > 0) {
-				if (element.progressValue < 100) {
-					element.progressValue = (Date.now() - element.progressBarTimeStamp) / 100;
-				} else {
-					element.progressBarVisibility = false;
-					element.isLoading = false;
-					element.progressValue = 0;
-					element.progressBarTimeStamp = 0;
-=======
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
@@ -139,7 +128,6 @@ export class Game {
 				else {
 					workbench.finished();
 					this.coins += 100;
->>>>>>> d991ae82e526fe449d10c7367f096b341507e5f2
 				}
 			}
 		});

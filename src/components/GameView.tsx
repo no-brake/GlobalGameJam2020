@@ -26,8 +26,8 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
     backgroundMove(e: React.MouseEvent<HTMLDivElement>) {
 
-        e.currentTarget.style.backgroundPositionX = 0.25 * -e.clientX + "px";
-        e.currentTarget.style.backgroundPositionY = 0.25 * -e.clientY + "px";
+        e.currentTarget.style.backgroundPositionX = 0.75 * -e.clientX + "px";
+        e.currentTarget.style.backgroundPositionY = 0.75 * -e.clientY + "px";
 
 		// const element: HTMLDivElement = document.querySelector("#game-view");
 

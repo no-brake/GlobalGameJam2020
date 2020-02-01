@@ -19,3 +19,7 @@
     background-size: 24px;
 }
 
+.build-workbench-button:hover {
+    background-image: url("./assets/icons/plus_hover.png");
+}
+

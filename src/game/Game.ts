@@ -132,26 +132,21 @@ export class Game {
 	}
 
 	public move(item: Item) {
-		let xSpeed = Math.random();
-		let ySpeed = Math.random();
 
-		item.posX += xSpeed;
-		item.posY += ySpeed;
+		item.posX += item.speedX;
+		item.posY += item.speedY;
 	}
 
 	public randomNumber(min: number, max: number) {
-		return (Math.random() * (max - min) + min) / 10;
+		return (Math.random() * (max - min) + min);
 	}
 
-	public update() {
-		const now = Date.now();
-
-		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			const partTypes = ["left", "right"];
+	public createItem(){
+		const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
-			let randomX: number = 100 + (this.randomNumber(0, 5)) * 500;
-			let randomY: number = 100 + (this.randomNumber(0, 5)) * 500;
+			let randomX: number = (this.randomNumber(0, 150));
+			let randomY: number = (this.randomNumber(0, 150));
 
 			if (Math.random() >= 0.5) {
 				randomY = -100;
@@ -160,8 +155,14 @@ export class Game {
 			}
 
 			let test: Item = new Item(partType, randomX, randomY, partType);
+			return test;
+	}
 
-			this.items.push(test);
+	public update() {
+		const now = Date.now();
+
+		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
+			this.items.push(this.createItem());
 
 			this.lastItemPushed = Date.now();
 		}
@@ -201,28 +202,30 @@ export class Game {
 			}
 		}
 		
-		var left = this.items.filter((obj) => obj.name === "left");
-		var right = this.items.filter((obj) => obj.name === "right");
-		var benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.isLoading === false && obj && obj.items.filter(i => i == null).length == 2);
+		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
+		if (benches.length > 0) {
+			const left = this.items.filter((obj) => obj.partType === "left" && !obj.isDragging);
+			const right = this.items.filter((obj) => obj.partType === "right" && !obj.isDragging);
 
-		if (Math.min(left.length, right.length, benches.length) > 0) {
-			//get first element available of each piece an workbench
-			const leftPiece = left[0];
-			const rightPiece = right[0];
-			benches[0].items = [leftPiece, rightPiece];
+			if (Math.min(left.length, right.length) > 0) {
+				//get first element available of each piece an workbench
+				const leftPiece = left[0];
+				const rightPiece = right[0];
+				benches[0].items = [leftPiece, rightPiece];
 
-			//remove pieces from available resources
-			const indexLeft = this.items.indexOf(leftPiece, 0);
-			const indexRight = this.items.indexOf(rightPiece, 0);
-			if (indexLeft > -1 && indexRight > -1) {
-				this.items.splice(indexLeft, 1);
-				this.items.splice(indexRight, 1);
+				//remove pieces from available resources
+				const indexLeft = this.items.indexOf(leftPiece, 0);
+				const indexRight = this.items.indexOf(rightPiece, 0);
+				if (indexLeft > -1 && indexRight > -1) {
+					this.items.splice(indexLeft, 1);
+					this.items.splice(indexRight, 1);
+				}
+
+				//add pieces to workbench and activate progressbar
+				benches[0].isLoading = true;
+				benches[0].progressBarTimeStamp = Date.now();
+				benches[0].progressBarVisibility = true;
 			}
-
-			//add pieces to workbench and activate progressbar
-			benches[0].isLoading = true;
-			benches[0].progressBarTimeStamp = Date.now();
-			benches[0].progressBarVisibility = true;
 		}
 
 		this.tick++;

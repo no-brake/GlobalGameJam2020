@@ -4,10 +4,10 @@ import { Timer } from "../game/Timer"
 import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
 import { ItemManager } from "./ItemManager";
-import { ItemBucket } from "./ItemBucket";
 import { BackgroundAudio } from "./BackgroundAudio";
 import { CoinView } from "./CoinView"
 import { Trashcan } from "./Trashcan";
+import { ItemCreator } from "./ItemCreator";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -29,13 +29,6 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         e.currentTarget.style.backgroundPositionX = 0.1 * -e.clientX + "px";
         e.currentTarget.style.backgroundPositionY = 0.1 * -e.clientY + "px";
-
-		// const element: HTMLDivElement = document.querySelector("#game-view");
-
-		// element.addEventListener("mousemove", (e) => {
-		// 	element.style.backgroundPositionX = -e.offsetX + "px";
-		// 	element.style.backgroundPositionY = -e.offsetY + "px";
-		// });
     }
 
     render() {
@@ -44,14 +37,12 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         return (
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
+                <div className="spawner"></div>
                 <ItemManager game={this.props.game}></ItemManager>
                 <CoinView game={game}></CoinView>
-                {/* <ItemBucket></ItemBucket> */}
-                {/* <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
-                <button onClick={() => game.saveGame()}>Save Game</button>
-                <button onClick={() => game.loadGame()}>Load Game</button> */}
                 <BackgroundAudio></BackgroundAudio>
 
+                <ItemCreator game={game}></ItemCreator>
                 <Trashcan game={game}></Trashcan>
 
                 <div className="workbench-area">
@@ -74,19 +65,8 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                         </tbody>
                     </table>
 
-                    {/* <div className="workbench-grid-container">
-                    <
-                <CoinView game={game}></CoinView>
-                <div className="workbench-grid-container">
-                    <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={2}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={3}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
-                </div> */}
-
                 </div>
+                
             </div>
         );
     }

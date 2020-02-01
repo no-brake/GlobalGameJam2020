@@ -120,6 +120,11 @@ export class Game {
 			if (element.progressBarTimeStamp > 0) {
 				if (element.progressValue < 100) {
 					element.progressValue = (Date.now() - element.progressBarTimeStamp) / 100;
+				} else {
+					element.progressBarVisibility = false;
+					element.isLoading = false;
+					element.progressValue = 0;
+					element.progressBarTimeStamp = 0;
 				}
 			}
 		});

@@ -31,14 +31,33 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div>
                 <ItemManager game={this.props.game}></ItemManager>
                 This is GameView! Last tick: {game.tick}.
-                <div className="workbench-grid-container">
+                <table className="workbench-table">
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={0}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={1}></WorkbenchView></td>
+                    </tr>
+
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={2}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={3}></WorkbenchView></td>
+                    </tr>
+
+                    <tr>
+                        <td><WorkbenchView game={this.props.game} index={4}></WorkbenchView></td>
+                        <td><WorkbenchView game={this.props.game} index={5}></WorkbenchView></td>
+                    </tr>
+
+                </table>
+
+                {/* <div className="workbench-grid-container">
+                    <
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={2}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={3}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
-                </div>
+                </div> */}
                 <ItemBucket></ItemBucket>
                 <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
                 <button onClick={() => game.saveGame()}>Save Game</button>

@@ -17,7 +17,8 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
         e.preventDefault();
         e.stopPropagation();
 
-        this.props.game.workbenchs[this.props.index].addItem(parseInt(e.dataTransfer.getData('index')));
+        const index = parseInt(e.dataTransfer.getData('index'));
+        this.props.game.workbenchs[this.props.index].addItem(index);
 
         e.currentTarget.classList.remove("drag-over");
     }

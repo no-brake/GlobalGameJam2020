@@ -16,18 +16,6 @@ export class RepairButton extends React.Component<RepairButtonProps, RepairButto
     }
 
     render() {
-<<<<<<< HEAD
-
-        let body = <button className="base-button repair-button" onClick={() => this.buttonOnClick()} ></button>;
-        
-        const isProgressBarVisible = this.props.game.workbenchs[this.props.index].progressBarVisibility;
-
-        if (isProgressBarVisible == true) {
-            body = <button disabled className="base-button repair-button" onClick={() => this.buttonOnClick()} ></button>;
-    }
-
-        return <div>{body}</div>;
-=======
         const workbench = this.props.game.workbenchs[this.props.index];
         const canRepair = workbench.canRepair && !workbench.progressBarVisibility;
 
@@ -36,7 +24,6 @@ export class RepairButton extends React.Component<RepairButtonProps, RepairButto
             onClick={() => this.buttonOnClick()}
             disabled={!canRepair}>
             </button>;
->>>>>>> d991ae82e526fe449d10c7367f096b341507e5f2
     }
 
 

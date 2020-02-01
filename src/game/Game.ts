@@ -80,7 +80,9 @@ export class Game {
 	}
 
 	public gameLoop() {
-		requestAnimationFrame(() => this.gameLoop());
+		// requestAnimationFrame(() => this.gameLoop());
+		setTimeout(() => this.gameLoop(), 500);
+		
 		if (this.pause) return;
 
 		const currentTime = Date.now();
@@ -106,31 +108,19 @@ export class Game {
 	}
 
 	public update() {
-		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
-
+			
 			this.items.push(new Item(partType, Math.random() * 500, Math.random() * 500, partType));
 			this.lastItemPushed = Date.now();
 		}
-
+		
 		if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}
-
-<<<<<<< HEAD
-		this.workbenchs.forEach(element => {
-			if (element.progressBarTimeStamp > 0) {
-				if (element.progressValue < 100) {
-					element.progressValue = (Date.now() - element.progressBarTimeStamp) / 100;
-				} else {
-					element.progressBarVisibility = false;
-					element.isLoading = false;
-					element.progressValue = 0;
-					element.progressBarTimeStamp = 0;
-=======
+		
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
@@ -139,9 +129,10 @@ export class Game {
 				else {
 					workbench.finished();
 					this.coins += 100;
->>>>>>> d991ae82e526fe449d10c7367f096b341507e5f2
 				}
 			}
 		});
+
+		this.tick++;
 	}
 }

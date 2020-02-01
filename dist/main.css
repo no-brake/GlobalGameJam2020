@@ -1,4 +1,7 @@
-
+.game-view {
+    display: flex;
+    justify-content: space-between;
+}
 
 .workbench-table {
     border: 3px solid rgba(1, 212, 231, 1);
@@ -239,6 +242,10 @@ progress[value]::-webkit-progress-value {
 
 .workbench.drag-over {
     border: 2px dashed orange;
+}
+
+.white-text {
+    color: white;
 }
 
 .bgimg{

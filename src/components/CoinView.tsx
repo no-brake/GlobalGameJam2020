@@ -6,6 +6,6 @@ export interface CoinViewProps { game: Game }
 export class CoinView extends React.Component<CoinViewProps, {}> {
     render() {
         const coins = this.props.game.coins;
-        return <div>Coins: {coins}</div>;
+        return <div className="coins white-text">Coins: {coins}</div>;
     }
 }

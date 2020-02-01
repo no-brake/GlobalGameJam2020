@@ -1,8 +1,13 @@
 import * as React from "react"
 import { Game } from "../game/Game"
 import { Timer } from "../game/Timer"
+<<<<<<< HEAD
 import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
+=======
+import { AddButton } from "./BuildWorkbench";
+import { ItemManager } from "./ItemManager";
+>>>>>>> 5dde369517913d1e04e905d4ab251681425ecb78
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -34,6 +39,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <WorkbenchView game={this.props.game} index={3}></WorkbenchView>
                 <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                 <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
+                <ItemManager maxNo = {5}></ItemManager>
                 </div>
             </div>
             

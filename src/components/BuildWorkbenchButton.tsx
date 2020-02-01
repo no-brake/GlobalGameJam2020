@@ -14,6 +14,7 @@ export class BuildWorkBenchButton extends React.Component<BuildWorkbenchButtonPr
     }
     
     render() {
+        
         return <button className="base-button build-workbench-button" onClick={() => this.buttonOnClick()} ></button>;
     }
 

@@ -13,7 +13,7 @@ export class CoinView extends React.Component<CoinViewProps, {}> {
             const top = (30 + update.offsetY) + "px";
             const left = (1100 + update.offsetX) + "px";
             const fontSize = Math.max(10, Math.min(30, 20 + (update.amount / 10))) + "px";
-            floatingCoins.push(<div className="floating-coin" style={{top, left, fontSize}}>{update.amount}</div>);
+            floatingCoins.push(<div className="floating-coin" key={"coin" + top + left} style={{top, left, fontSize}}>{update.amount}</div>);
         }
 
         return <div>

@@ -20,16 +20,16 @@ export class Game {
 	public externalRedraw: () => void;
 
 	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
-	public items: { name: string, start: number }[] = [];
+	public items: Item[] = [];
 
 	public constructor() {
 
 		for (let i = 0; i < this.workbenchs.length; i++) {
-			this.workbenchs[i] = new Workbench();
+			this.workbenchs[i] = new Workbench(this);
 		}
 		this.workbenchs[0].level = 1;
 
-		this.items.push(new Item("name", Math.random() * 20));
+		this.items.push(new Item("name", Math.random() * 500, Math.random() * 500));
 		this.lastItemPushed = Date.now();
 		this.lastItemDeleted = Date.now();
 		this.maxItems = 5;
@@ -106,12 +106,14 @@ export class Game {
 
 		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			this.items.push(new Item("name", Math.random() * 300));
+			const partTypes = ["left", "right"];
+			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
+
+			this.items.push(new Item(partType, Math.random() * 500, Math.random() * 500, partType));
 			this.lastItemPushed = Date.now();
 		}
 
-
-		if (Date.now() - this.lastItemDeleted > 10000) {
+		if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}

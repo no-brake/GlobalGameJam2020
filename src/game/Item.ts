@@ -1,9 +1,20 @@
-export class Item{
-    public name:string;
-    public start:number;
+// type PartType = "left" | "right";
 
-    constructor(name:string, start:number){
+export class Item{
+    public name: string;
+    public isDragging: boolean;
+
+    public posX: number;
+    public posY: number;
+
+    public partType: string;
+
+    constructor(name: string, posX: number, posY: number, partType: string = "left"){
         this.name = name;
-        this.start = start;
+        this.posX = posX;
+        this.posY = posY;
+        this.partType = partType;
+
+        this.isDragging = false;
     }
 }

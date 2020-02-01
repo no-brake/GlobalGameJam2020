@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="./public/main.css" />
-        <title>Hello React!</title>
-    </head>
-    <body>
-        <div id="react-hook"></div>
 
-        <!-- Dependencies -->
-        <script src="./public/react.development.js"></script>
-        <script src="./public/react-dom.development.js"></script>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="./public/main.css" />
+    <title>Hello React!</title>
+</head>
 
-        <!-- Main -->
-        <embed src="./public/assets/sounds/FutureAmbient_3.wav" autostart=false loop=true>
-        <script src="./public/main.js"></script>
-    </body>
+<body>
+    <div id="react-hook"></div>
+
+
+    <audio id="audio_with_controls" autoplay loop>
+        <source src="./public/assets/sounds/bgsound/chillstep_2.wav" type="audio/wav">
+    </audio>
+
+    <!-- Dependencies -->
+    <script src="./public/react.development.js"></script>
+    <script src="./public/react-dom.development.js"></script>
+
+    <!-- Main -->
+    <script src="./public/main.js"></script>
+</body>
+
 </html>

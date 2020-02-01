@@ -18,6 +18,7 @@ export class Game {
 	public maxItems: number;
 
 	public coins: number;
+	public coinUpdates: {amount: number, offsetX: number, offsetY: number, endOfLife: number}[];
 
 	public externalRedraw: () => void;
 
@@ -36,6 +37,7 @@ export class Game {
 		this.maxItems = 5;
 
 		this.coins = 0;
+		this.coinUpdates = [];
 
 		this.pause = false;
 
@@ -73,9 +75,18 @@ export class Game {
 		this.items.splice(itemIndex, 1);
 
 		this.lastItemDeleted = Date.now();
-		this.coins += 10;
+		this.addCoins(10);
 
 		this.externalRedraw();
+	}
+
+	public addCoins(amount: number) {
+		this.coins += amount;
+
+		const offsetX = Math.random() * 200 - 100;
+		const offsetY = Math.random() * 40 - 20;
+		const endOfLife = Date.now() + 5000;
+		this.coinUpdates.push({amount, offsetX, offsetY, endOfLife});
 	}
 
 	public gameStart() {
@@ -121,7 +132,9 @@ export class Game {
 	}
 
 	public update() {
-		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
+		const now = Date.now();
+
+		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
@@ -129,9 +142,17 @@ export class Game {
 			this.lastItemPushed = Date.now();
 		}
 
-		if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
+		if (now - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
+		}
+
+		// Remove old coin update animations
+		for (let i = this.coinUpdates.length - 1; i >= 0; i--) {
+			const coin = this.coinUpdates[i];
+			if (coin.endOfLife < now) {
+				this.coinUpdates.splice(i, 1);
+			}
 		}
 
 		this.workbenchs.forEach(workbench => {
@@ -141,7 +162,7 @@ export class Game {
 				}
 				else {
 					workbench.finished();
-					this.coins += 100;
+					this.addCoins(100);
 				}
 			}
 		});

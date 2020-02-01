@@ -201,8 +201,8 @@ export class Game {
 		
 		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
 		if (benches.length > 0) {
-			const left = this.items.filter((obj) => obj.name === "left");
-			const right = this.items.filter((obj) => obj.name === "right");
+			const left = this.items.filter((obj) => obj.name === "left" && !obj.isDragging);
+			const right = this.items.filter((obj) => obj.name === "right" && !obj.isDragging);
 
 			if (Math.min(left.length, right.length) > 0) {
 				//get first element available of each piece an workbench

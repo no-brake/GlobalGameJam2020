@@ -17,7 +17,7 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
         let body = <BuildWorkBenchButton game={this.props.game} index={this.props.index}></BuildWorkBenchButton>
 
         if (level > 0) {
-            body = <span>Workbench Visible</span>;
+            body = <img src="public/assets/items/400x400-workbench-level01.png" alt="Workbench Level 1"/>;
         } 
 
         return <div>{body}</div>;

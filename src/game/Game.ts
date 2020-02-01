@@ -195,7 +195,7 @@ export class Game {
 		});
 
 		for (let i = this.items.length - 1; i >= 0; i--) {
-			if (this.items[i].posY > 760 || this.items[i].posX > 1200) {
+			if (this.items[i].posY > 1000 || this.items[i].posX > 1500) {
 				this.items.splice(i, 1);
 			} else {
 				this.move(this.items[i]);

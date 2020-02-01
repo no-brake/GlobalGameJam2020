@@ -8,6 +8,7 @@ body {
     margin: 0px;
 
     user-select: none;
+    overflow: hidden;
 }
 
 #react-hook{
@@ -337,6 +338,14 @@ progress[value] {
     line-height: 220px;
     border-radius: 100%;
     width: 160px;
+}
+
+.action_button:hover{
+    background-color: lightcoral;
+}
+
+.action_button:active{
+    background-color: lightsalmon;
 }
 
 .action_button i {

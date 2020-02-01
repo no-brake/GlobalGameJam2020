@@ -143,9 +143,6 @@ export class Game {
 	}
 
 	public combineItems(leftItem: Item, rightItem: Item) {
-		this.addCoins(1);
-		return;
-		
 		const value = combinationLookup[leftItem.name][rightItem.name];
 		if (!this.combinationTracker[leftItem.name]) {
 			this.combinationTracker[leftItem.name] = {};
@@ -183,7 +180,7 @@ export class Game {
 				randomX = -100;
 			}
 
-			let item: Item = new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
+			let item: Item = new Item(selectedItem, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
 			items.push(item);
 		}
 		return items;

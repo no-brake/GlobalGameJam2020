@@ -141,12 +141,17 @@ export class Game {
 		return (Math.random() * (max - min) + min);
 	}
 
-	public createItem(){
-		const partTypes = ["left", "right"];
-			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
+	public createItem(numberOfItems: number) {
+		let items: Item[] = [];
+		for (let i = 0; i < numberOfItems; i++) {
+			const availableItems = ["banane", "bear", "croissant", "einhorn", "laptop", "pizza", "uboot", "uhr"];
+			const partTypes = ["left", "right"];
 
-			let randomX: number = (this.randomNumber(0, 150));
-			let randomY: number = (this.randomNumber(0, 150));
+			const selectedItem = availableItems[Math.floor(Math.random() * availableItems.length)];
+			const selectedPartType = partTypes[Math.floor(Math.random() * partTypes.length)];
+
+			let randomX: number = this.randomNumber(0, 150);
+			let randomY: number = this.randomNumber(0, 150);
 
 			if (Math.random() >= 0.5) {
 				randomY = -100;
@@ -154,15 +159,17 @@ export class Game {
 				randomX = -100;
 			}
 
-			let test: Item = new Item(partType, randomX, randomY, partType);
-			return test;
+			let item: Item = new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem);
+			items.push(item);
+		}
+		return items;
 	}
 
 	public update() {
 		const now = Date.now();
 
 		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			this.items.push(this.createItem());
+			this.items.push(...this.createItem(1));
 
 			this.lastItemPushed = Date.now();
 		}
@@ -185,7 +192,7 @@ export class Game {
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
-					workbench.progressValue = (Date.now() - workbench.progressBarTimeStamp) / 100;
+					workbench.progressValue = ((Date.now() - workbench.progressBarTimeStamp) / 100) * workbench.level * 2;
 				}
 				else {
 					workbench.finished();
@@ -195,13 +202,13 @@ export class Game {
 		});
 
 		for (let i = this.items.length - 1; i >= 0; i--) {
-			if (this.items[i].posY > 760 || this.items[i].posX > 1200) {
+			if (this.items[i].posY > 1000 || this.items[i].posX > 1500) {
 				this.items.splice(i, 1);
 			} else {
 				this.move(this.items[i]);
 			}
 		}
-		
+
 		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
 		if (benches.length > 0) {
 			const left = this.items.filter((obj) => obj.partType === "left" && !obj.isDragging);

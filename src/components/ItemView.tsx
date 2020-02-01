@@ -26,12 +26,13 @@ export class ItemView extends React.Component<ItemProps, ItemState> {
 
     render() {
         const item = this.props.item;
+        const combinedPath = "public/assets/items/150x150-item-" + item.image + "-" + item.partType[0] + ".png";
 
         return <div style={{top: item.posY + "px", left: item.posX + "px"}} className="item"
             draggable
             onDragStart={e => this.onDragStart(e)}
             onDragEnd={e =>this.onDragEnd(e)}>
-                {this.props.name}
+                {item.image ? <img src={combinedPath} /> : item.name}
             </div>
     }
 }

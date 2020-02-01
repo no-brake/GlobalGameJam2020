@@ -8,6 +8,7 @@ body {
     margin: 0px;
 
     user-select: none;
+    overflow: hidden;
 }
 
 #react-hook{
@@ -27,12 +28,22 @@ body {
     justify-content: flex-end;
     align-content: center;
 }
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 
 .spawner {
+    animation: rotation 50s infinite linear;
+
     position: absolute;
-    top: -300px;
-    left: -750px;
-    background-image: url(./assets/background/gg20-spawn-img.png);
+    top: -350px;
+    left: -850px;
+    background-image: url(./assets/background/gg20-spawn-img-2x.png);
     background-position: center;
     height: 100%;
     width: 100%;
@@ -124,10 +135,6 @@ body {
 
 .base-button:disabled {
     background-color: lightgray;
-}
-
-.base-button:hover:enabled {
-
 }
 
 progress {
@@ -276,27 +283,28 @@ progress[value] {
 .item {
     position: absolute;
     display: block;
-    width: 64px;
-    height: 64px;
+    width: 150px;
+    height: 150px;
 
     z-index: 999;
+}
 
-    background-color: dodgerblue;
-    border: 2px dashed skyblue;
+.workbench-item {
+    position: absolute;
+    display: block;
+
+    width: 70px;
+    height: auto;
 }
 
 .left-item {
-    position: absolute;
-    display: block;
-    top: 120px;
-    left: 60px;
+    top: 100px;
+    left: 50px;
 }
 
 .right-item {
-    position: absolute;
-    display: block;
-    top: 120px;
-    right: 60px;
+    top: 100px;
+    right: 50px;
 }
 
 .workbench {
@@ -315,28 +323,34 @@ progress[value] {
     color: white;
 }
 
-.trashcan {
+.action_button_container {
     position: absolute;
-    width: 160px;
+    width: 320px;
     height: 160px;
 
     top: 60px;
-    right: 620px;
-
-    background-color: lightpink;
-    text-align: center;
-    line-height: 160px;
+    right: 580px;
+    display: flex;
 }
 
-.itemcreator {
-    position: absolute;
-    width: 160px;
-    height: 160px;
-
-    top: 60px;
-    right: 800px;
-
+.action_button {
     background-color: lightpink;
+    text-align: center;
+    line-height: 220px;
+    border-radius: 100%;
+    width: 160px;
+}
+
+.action_button:hover{
+    background-color: lightcoral;
+}
+
+.action_button:active{
+    background-color: lightsalmon;
+}
+
+.action_button i {
+    font-size: 80px;
 }
 
 .floating-coin {

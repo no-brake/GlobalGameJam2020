@@ -37,6 +37,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         return (
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
+                <div className="spawner"></div>
                 <ItemManager game={this.props.game}></ItemManager>
                 <CoinView game={game}></CoinView>
                 <BackgroundAudio></BackgroundAudio>
@@ -64,6 +65,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     </table>
 
                 </div>
+                
             </div>
         );
     }

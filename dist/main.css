@@ -28,6 +28,19 @@ body {
     align-content: center;
 }
 
+.spawner {
+    position: absolute;
+    top: -300px;
+    left: -750px;
+    z-index: 999;
+    background-image: url(./assets/background/gg20-spawn-img.png);
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
 /* .workbench-area {
     
 } */

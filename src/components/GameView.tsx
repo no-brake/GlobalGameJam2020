@@ -4,10 +4,10 @@ import { Timer } from "../game/Timer"
 import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
 import { ItemManager } from "./ItemManager";
-import { ItemBucket } from "./ItemBucket";
 import { BackgroundAudio } from "./BackgroundAudio";
 import { CoinView } from "./CoinView"
 import { Trashcan } from "./Trashcan";
+import { ItemCreator } from "./ItemCreator";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -42,6 +42,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <CoinView game={game}></CoinView>
                 <BackgroundAudio></BackgroundAudio>
 
+                <ItemCreator game={game}></ItemCreator>
                 <Trashcan game={game}></Trashcan>
 
                 <div className="workbench-area">

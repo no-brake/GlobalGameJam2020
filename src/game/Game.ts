@@ -146,9 +146,12 @@ export class Game {
 		for (let i = 0; i < numberOfItems; i++) {
 			const availableItems = ["banane", "bear", "croissant", "einhorn", "laptop", "pizza", "uboot", "uhr"];
 			const partTypes = ["left", "right"];
+			const rotationDirection = ["normal", "reverse"];
+			const rotationSpeed = Math.random() * 100;
 
 			const selectedItem = availableItems[Math.floor(Math.random() * availableItems.length)];
 			const selectedPartType = partTypes[Math.floor(Math.random() * partTypes.length)];
+			const selectedRotationDirection = rotationDirection[Math.floor(Math.random() * rotationDirection.length)];
 
 			let randomX: number = this.randomNumber(0, 150);
 			let randomY: number = this.randomNumber(0, 150);
@@ -159,7 +162,7 @@ export class Game {
 				randomX = -100;
 			}
 
-			let item: Item = new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem);
+			let item: Item = new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
 			items.push(item);
 		}
 		return items;

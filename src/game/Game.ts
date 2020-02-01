@@ -1,4 +1,5 @@
 import { Timer } from "./Timer";
+import { Workbench } from "./Workbench";
 
 
 export class Game {	
@@ -9,8 +10,15 @@ export class Game {
 
 	public externalRedraw: () => void;
 
+	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
 	
 	public constructor() {
+
+		for (let i = 0; i < this.workbenchs.length; i++ ) {
+			this.workbenchs[i] = new Workbench();
+		}
+		this.workbenchs[0].level = 1;
+
 		this.pause = false;
 		
 		this.tick = 0;
@@ -54,8 +62,6 @@ export class Game {
 	}
 	
 	public update() {
-
-		console.log("Test")
 
 		this.tick++;
 	}

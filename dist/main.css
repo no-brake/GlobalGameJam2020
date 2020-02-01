@@ -13,6 +13,9 @@
 
 .build-workbench-button {
     color: black;
-    background-image: url("./Art/Icons/plus.png")
+    background-image: url("./assets/Icons/plus.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
 }
 

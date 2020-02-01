@@ -42,8 +42,10 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <CoinView game={game}></CoinView>
                 <BackgroundAudio></BackgroundAudio>
 
-                <ItemCreator game={game}></ItemCreator>
-                <Trashcan game={game}></Trashcan>
+                <div className="action_button_container">
+                    <ItemCreator game={game}></ItemCreator>
+                    <Trashcan game={game}></Trashcan>
+                </div>
 
                 <div className="workbench-area">
                     <table className="workbench-table">
@@ -66,7 +68,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     </table>
 
                 </div>
-                
+
             </div>
         );
     }

@@ -35,6 +35,7 @@ export class Trashcan extends React.Component<TrashcanProps, {}> {
                 onDragOver={this.onDragOver}
                 onDragEnter={this.onDragEnter}
                 onDragLeave={this.onDragLeave}>
+                    <i className="material-icons">delete</i>
                 </div>;
     }
 }

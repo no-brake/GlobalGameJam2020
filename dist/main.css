@@ -327,6 +327,8 @@ progress[value] {
     right: 620px;
 
     background-color: lightpink;
+    text-align: center;
+    line-height: 160px;
 }
 
 .itemcreator {
@@ -335,7 +337,7 @@ progress[value] {
     height: 160px;
 
     top: 60px;
-    right: 440px;
+    right: 800px;
 
     background-color: lightpink;
 }

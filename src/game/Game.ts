@@ -1,6 +1,10 @@
 import { Timer } from "./Timer";
 import { Workbench } from "./Workbench";
 
+interface SaveState {
+	tick: number;
+	workbenches: Workbench[];
+}
 
 export class Game {	
 	public pause: boolean = true;
@@ -25,9 +29,32 @@ export class Game {
 		
 		this.gameStart();
 	}
+
+	public saveGame() {
+		const saveState: SaveState = {
+			tick: this.tick,
+			workbenches: this.workbenchs
+		}
+
+		localStorage.setItem("saveGame", JSON.stringify(saveState));
+	}
+
+	public loadGame() {
+		const saveState = JSON.parse(localStorage.getItem("saveGame")) as SaveState;
+		
+		this.tick = saveState.tick;
+		this.workbenchs = saveState.workbenches;
+
+		console.log("Game state restored (Tick " + this.tick + ")");
+	}
 	
 	public gameStart() {
 		this.lastUpdate = Date.now();
+
+		if (localStorage.getItem("saveGame")) {
+			this.loadGame();
+		}
+
 		this.gameLoop();
 	}
 

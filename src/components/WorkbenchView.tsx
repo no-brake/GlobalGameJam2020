@@ -13,7 +13,7 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
     render() {
 
         const level = this.props.game.workbenchs[this.props.index].level;
-        console.log("Level: " + level);
+        //console.log("Level: " + level);
         let body = <BuildWorkBenchButton game={this.props.game} index={this.props.index}></BuildWorkBenchButton>
 
         if (level > 0) {

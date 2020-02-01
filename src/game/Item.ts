@@ -13,7 +13,10 @@ export class Item {
     public partType: string;
     public image: string;
 
-    constructor(name: string, posX: number, posY: number, partType: string = "left", image: string = ""){
+    public rotationSpeed: number;
+    public rotationDirection: string;
+
+    constructor(name: string, posX: number, posY: number, partType: string = "left", image: string = "", rotationSpeed:number = 30, rotationDirection:string = "normal"){
         this.name = name;
         this.posX = posX;
         this.posY = posY;
@@ -24,5 +27,8 @@ export class Item {
 
         this.speedX = Math.random() + Math.random();
         this.speedY = Math.random() + Math.random();
+
+        this.rotationDirection = rotationDirection;
+        this.rotationSpeed = rotationSpeed;
     }
 }

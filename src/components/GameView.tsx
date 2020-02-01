@@ -27,8 +27,8 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
     backgroundMove(e: React.MouseEvent<HTMLDivElement>) {
 
-        e.currentTarget.style.backgroundPositionX = 0.75 * -e.clientX + "px";
-        e.currentTarget.style.backgroundPositionY = 0.75 * -e.clientY + "px";
+        e.currentTarget.style.backgroundPositionX = 0.01 * -e.clientX + "px";
+        e.currentTarget.style.backgroundPositionY = 0.01 * -e.clientY + "px";
 
 		// const element: HTMLDivElement = document.querySelector("#game-view");
 
@@ -45,9 +45,8 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         return (
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <ItemManager game={this.props.game}></ItemManager>
-                <span className="white-text">This is GameView! Last tick: {game.tick}.</span>
                 <CoinView game={game}></CoinView>
-                <ItemBucket></ItemBucket>
+                {/* <ItemBucket></ItemBucket> */}
                 {/* <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
                 <button onClick={() => game.saveGame()}>Save Game</button>
                 <button onClick={() => game.loadGame()}>Load Game</button> */}

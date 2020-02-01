@@ -2,6 +2,7 @@ import * as React from "react"
 import { Game } from "../game/Game"
 import { Timer } from "../game/Timer"
 import { AddButton } from "./BuildWorkbench";
+import { ItemManager } from "./ItemManager";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -27,6 +28,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div>
                 This is GameView! Last tick: {game.tick}.
                 <div>
+                <ItemManager maxNo = {5}></ItemManager>
                 <AddButton></AddButton>
                 </div>
             </div>

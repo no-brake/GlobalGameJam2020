@@ -7,6 +7,9 @@ export class Item {
     public posX: number;
     public posY: number;
 
+    public speedX: number;
+    public speedY: number;
+
     public partType: string;
 
     constructor(name: string, posX: number, posY: number, partType: string = "left"){
@@ -16,5 +19,8 @@ export class Item {
         this.partType = partType;
 
         this.isDragging = false;
+
+        this.speedX = Math.random() + Math.random();
+        this.speedY = Math.random() + Math.random();
     }
 }

@@ -132,11 +132,9 @@ export class Game {
 	}
 
 	public move(item: Item) {
-		let xSpeed = Math.random();
-		let ySpeed = Math.random();
 
-		item.posX += xSpeed;
-		item.posY += ySpeed;
+		item.posX += item.speedX;
+		item.posY += item.speedY;
 	}
 
 	public randomNumber(min: number, max: number) {

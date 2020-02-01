@@ -4,15 +4,19 @@
     align-items: center;
     justify-items: center;
     margin: auto;
+    
 }
 
 .workbench-grid-container {
     display: grid;
     grid-template-columns: 250px 250px;
     grid-template-rows: 250px 250px 250px;
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
     align-items: center;
     justify-items: center;
     margin: auto;
+    border: 3px solid rgba(1, 212, 231, 1);    
 }
 
 .icon-grid-container {
@@ -22,6 +26,8 @@
     align-items: center;
     justify-items: center;
     margin: auto;
+    position: relative;
+    bottom: 25px;
 }
 
 .centered-image {
@@ -68,15 +74,6 @@
     background-image: url("./assets/icons/plus_hover.png");
 }
 
-@-webkit-keyframes animate-stripes {
-    100% { background-position: -100px 0px; }
- }
- 
- @keyframes animate-stripes {
-    100% { background-position: -100px 0px; }
- }
-
-
 progress[value] {
     /* Reset the default appearance */
     -webkit-appearance: none;
@@ -86,7 +83,7 @@ progress[value] {
     height: 20px;
   }
 
-  progress[value]::-webkit-progress-value {
+  /* progress[value]::-webkit-progress-value {
     background-image:
         -webkit-linear-gradient(-45deg, 
                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
@@ -98,15 +95,19 @@ progress[value] {
   
       border-radius: 2px; 
       background-size: 35px 20px, 100% 100%, 100% 100%;
-      -webkit-animation: animate-stripes 5s linear infinite;
-        animation: animate-stripes 5s linear infinite;
-  }
+  } */
 
 
 .progressbar {
-    visibility: visible;
     position: relative;
     top: 75px;
+}
+
+.progressbar-placeholder {
+    position: relative;
+    top: 75px;
+    width: 175px;
+    height: 20px;
 }
 
 .upgrade-workbench-button {

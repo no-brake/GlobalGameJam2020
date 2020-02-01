@@ -103,6 +103,7 @@ export class Game {
 
 	public update() {
 
+
 		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
@@ -116,5 +117,13 @@ export class Game {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}
+
+		this.workbenchs.forEach(element => {
+			if (element.progressBarTimeStamp > 0) {
+				if (element.progressValue < 100) {
+					element.progressValue = (Date.now() - element.progressBarTimeStamp) / 100;
+				}
+			}
+		});
 	}
 }

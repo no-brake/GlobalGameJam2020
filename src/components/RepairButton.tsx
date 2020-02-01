@@ -9,7 +9,8 @@ export interface RepairButtonState {}
 export class RepairButton extends React.Component<BuildWorkbenchButtonProps, RepairButtonState> {
     
     buttonOnClick() {
-
+        this.props.game.workbenchs[this.props.index].progressBarTimeStamp = Date.now();
+        this.props.game.workbenchs[this.props.index].progressBarVisibility = true;
     }
     
     render() {

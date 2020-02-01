@@ -241,7 +241,7 @@ progress[value]::-webkit-progress-value {
 }
 
 .workbench.drag-over {
-    border: 2px dashed orange;
+    outline: 5px dashed orange;
 }
 
 .white-text {

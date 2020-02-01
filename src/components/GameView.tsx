@@ -34,21 +34,22 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <span className="white-text">This is GameView! Last tick: {game.tick}.</span>
                 <CoinView game={game}></CoinView>
                 <table className="workbench-table">
-                    <tr>
-                        <td><WorkbenchView game={this.props.game} index={0}></WorkbenchView></td>
-                        <td><WorkbenchView game={this.props.game} index={1}></WorkbenchView></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td><WorkbenchView game={this.props.game} index={0}></WorkbenchView></td>
+                            <td><WorkbenchView game={this.props.game} index={1}></WorkbenchView></td>
+                        </tr>
 
-                    <tr>
-                        <td><WorkbenchView game={this.props.game} index={2}></WorkbenchView></td>
-                        <td><WorkbenchView game={this.props.game} index={3}></WorkbenchView></td>
-                    </tr>
+                        <tr>
+                            <td><WorkbenchView game={this.props.game} index={2}></WorkbenchView></td>
+                            <td><WorkbenchView game={this.props.game} index={3}></WorkbenchView></td>
+                        </tr>
 
-                    <tr>
-                        <td><WorkbenchView game={this.props.game} index={4}></WorkbenchView></td>
-                        <td><WorkbenchView game={this.props.game} index={5}></WorkbenchView></td>
-                    </tr>
-
+                        <tr>
+                            <td><WorkbenchView game={this.props.game} index={4}></WorkbenchView></td>
+                            <td><WorkbenchView game={this.props.game} index={5}></WorkbenchView></td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 {/* <div className="workbench-grid-container">

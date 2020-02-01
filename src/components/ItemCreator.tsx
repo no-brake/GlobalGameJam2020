@@ -6,7 +6,7 @@ export interface ItemCreatorProps { game: Game }
 
 export class ItemCreator extends React.Component<ItemCreatorProps, {}> {
     createPiece() {
-        this.props.game.items.push(this.props.game.createItem());
+        this.props.game.items.push(...this.props.game.createItem(1));
     }
 
     render() {

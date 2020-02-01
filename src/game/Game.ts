@@ -81,7 +81,7 @@ export class Game {
 
 	public gameLoop() {
 		// requestAnimationFrame(() => this.gameLoop());
-		setTimeout(() => this.gameLoop(), 500);
+		setTimeout(() => this.gameLoop(), 50);
 		
 		if (this.pause) return;
 

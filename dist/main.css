@@ -113,12 +113,36 @@ body {
     background-image: url("./assets/icons/plus_hover.png");
 }
 
+progress {
+    border: 1px solid black;
+    height: 20px;
+    border-radius: 5px;
+}
+progress::-webkit-progress-bar {
+    border: 1px solid black;
+    height: 20px;
+    border-radius: 5px;
+}
+
+progress::-moz-progress-bar {
+    border: 1px solid black;
+    height: 20px;
+    border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+    border: 2px solid transparent;
+    height: 18px;
+    border-radius: 5px;
+}
+
 progress[value] {
     /* Reset the default appearance */
-    -webkit-appearance: none;
-    appearance: none;
-    width: 175px;
-    height: 20px;
+    /* -webkit-appearance: none; */
+    /* appearance: none; */
+    border: 2px solid transparent;
+    height: 18px;
+    border-radius: 5px;
   }
 
   /* progress[value]::-webkit-progress-value {
@@ -135,11 +159,11 @@ progress[value] {
       background-size: 35px 20px, 100% 100%, 100% 100%;
   } */
 
-progress[value]::-webkit-progress-value {
+/* progress[value]::-webkit-progress-value {
     background-image: -webkit-linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%), -webkit-linear-gradient(top, rgba(255, 255, 255, .25), rgba(0, 0, 0, .25)), -webkit-linear-gradient(left, rgb(205, 255, 200), rgb(0, 255, 21));
     border-radius: 2px;
     background-size: 35px 20px, 100% 100%, 100% 100%;
-}
+} */
 
 .progressbar {
     position: relative;

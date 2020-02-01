@@ -54,5 +54,6 @@ export class Workbench {
         this.canRepair = false;
         this.isLoading = false;
         this.progressBarTimeStamp = 0;
+        this.progressValue = 0;
     }
 }	

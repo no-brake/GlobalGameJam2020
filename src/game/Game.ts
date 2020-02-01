@@ -4,7 +4,7 @@ import { Item } from "./Item";
 
 interface SaveState {
 	tick: number;
-	workbenches: Workbench[];
+	workbenches: any[];
 	items: Item[];
 }
 
@@ -31,8 +31,7 @@ export class Game {
 		}
 		this.workbenchs[0].level = 1;
 
-		this.items.push(new Item("name", Math.random() * 500, Math.random() * 500));
-		this.lastItemPushed = Date.now();
+		this.lastItemPushed = 0;
 		this.lastItemDeleted = Date.now();
 		this.maxItems = 5;
 
@@ -48,21 +47,35 @@ export class Game {
 	public saveGame() {
 		const saveState: SaveState = {
 			tick: this.tick,
-			workbenches: this.workbenchs,
+			workbenches: this.workbenchs.map(wb => wb.toSaveState()),
 			items: this.items
 		}
+
+		console.log(JSON.stringify(saveState))
 
 		localStorage.setItem("saveGame", JSON.stringify(saveState));
 	}
 
 	public loadGame() {
+		console.log(localStorage.getItem("saveGame"))
 		const saveState = JSON.parse(localStorage.getItem("saveGame")) as SaveState;
 
 		this.tick = saveState.tick;
-		this.workbenchs = saveState.workbenches;
+		this.workbenchs = saveState.workbenches.map(wb => Workbench.fromSaveState(wb, this));
 		this.items = saveState.items;
 
 		console.log("Game state restored (Tick " + this.tick + ")");
+	}
+
+	public trashItem(itemIndex: number) {
+		// const item = this.items[itemIndex];
+
+		this.items.splice(itemIndex, 1);
+
+		this.lastItemDeleted = Date.now();
+		this.coins += 10;
+
+		this.externalRedraw();
 	}
 
 	public gameStart() {
@@ -112,7 +125,7 @@ export class Game {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 			
-			this.items.push(new Item(partType, Math.random() * 500, Math.random() * 500, partType));
+			this.items.push(new Item(partType, Math.random() * 500, 100 + Math.random() * 500, partType));
 			this.lastItemPushed = Date.now();
 		}
 		

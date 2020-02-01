@@ -3,7 +3,6 @@ import { Game } from "../game/Game"
 import { Timer } from "../game/Timer"
 import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
-import { AddButton } from "./BuildWorkbench";
 import { ItemManager } from "./ItemManager";
 
 export interface GameViewProps { game: Game }

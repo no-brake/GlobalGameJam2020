@@ -1,0 +1,15 @@
+#folder
+node_modules/*
+dist/**/*.js
+dist/**/*.map
+
+#file endings
+.tern-project
+.env
+.gitmodules
+
+#files
+package-lock.json
+*.cert
+*.key
+*.crt

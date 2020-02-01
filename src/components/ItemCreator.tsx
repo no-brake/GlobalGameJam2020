@@ -6,14 +6,15 @@ export interface ItemCreatorProps { game: Game }
 
 export class ItemCreator extends React.Component<ItemCreatorProps, {}> {
     createPiece() {
-        this.props.game.items.push(this.props.game.createItem());
+        this.props.game.items.push(...this.props.game.createItem(1));
     }
 
     render() {
         return (
-            <button className="itemcreator"
+            <div className="action_button"
                 onClick={() => this.createPiece()}>
-            </button>
+                    <i className="material-icons">plus_one</i>
+            </div>
         );
     }
 }

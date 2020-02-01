@@ -30,11 +30,12 @@ export class Trashcan extends React.Component<TrashcanProps, {}> {
     }
 
     render() {
-        return <div className="trashcan"
+        return <div className="action_button"
                 onDrop={e => this.onDrop(e)}
                 onDragOver={this.onDragOver}
                 onDragEnter={this.onDragEnter}
                 onDragLeave={this.onDragLeave}>
+                    <i className="material-icons">delete_forever</i>
                 </div>;
     }
 }

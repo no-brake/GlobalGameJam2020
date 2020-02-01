@@ -136,10 +136,6 @@ body {
     background-color: lightgray;
 }
 
-.base-button:hover:enabled {
-
-}
-
 progress {
     border: 1px solid black;
     height: 20px;

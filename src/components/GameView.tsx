@@ -29,13 +29,6 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         e.currentTarget.style.backgroundPositionX = 0.1 * -e.clientX + "px";
         e.currentTarget.style.backgroundPositionY = 0.1 * -e.clientY + "px";
-
-		// const element: HTMLDivElement = document.querySelector("#game-view");
-
-		// element.addEventListener("mousemove", (e) => {
-		// 	element.style.backgroundPositionX = -e.offsetX + "px";
-		// 	element.style.backgroundPositionY = -e.offsetY + "px";
-		// });
     }
 
     render() {
@@ -46,10 +39,6 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <ItemManager game={this.props.game}></ItemManager>
                 <CoinView game={game}></CoinView>
-                {/* <ItemBucket></ItemBucket> */}
-                {/* <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
-                <button onClick={() => game.saveGame()}>Save Game</button>
-                <button onClick={() => game.loadGame()}>Load Game</button> */}
                 <BackgroundAudio></BackgroundAudio>
 
                 <Trashcan game={game}></Trashcan>
@@ -73,18 +62,6 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                             </tr>
                         </tbody>
                     </table>
-
-                    {/* <div className="workbench-grid-container">
-                    <
-                <CoinView game={game}></CoinView>
-                <div className="workbench-grid-container">
-                    <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={2}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={3}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
-                    <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
-                </div> */}
 
                 </div>
             </div>

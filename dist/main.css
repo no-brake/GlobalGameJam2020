@@ -140,3 +140,12 @@ progress[value] {
     background-image: url("./assets/icons/repair_hover.png");
 }
 
+.item {
+    position: absolute;
+    display: block;
+    width: 64px;
+    height: 64px;
+
+    background-color: dodgerblue;
+    border: 2px dashed skyblue;
+}

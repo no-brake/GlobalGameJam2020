@@ -7,7 +7,16 @@ export interface ItemProps {
 export interface ItemState {}
 
 export class Item extends React.Component<ItemProps, ItemState> {
+
+    onDragStart(e: React.DragEvent<HTMLElement>) {
+        console.log("Start")
+    }
+
     render() {
-        return <div style={{position: "absolute", top: "0px", left: this.props.start + "px"}} className="item">{this.props.name}</div>;
+        const start = this.props.start;
+
+        return <div style={{top: "0px", left: start + "px"}} className="item" draggable onDragStart={this.onDragStart}>
+                {this.props.name}
+            </div>
     }
 }

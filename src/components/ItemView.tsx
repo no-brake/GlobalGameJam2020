@@ -6,7 +6,7 @@ export interface ItemProps {
     item: Item,
     index: number
 }
-export interface ItemState {}
+export interface ItemState { }
 
 export class ItemView extends React.Component<ItemProps, ItemState> {
 
@@ -14,7 +14,7 @@ export class ItemView extends React.Component<ItemProps, ItemState> {
         e.dataTransfer.setData("index", "" + this.props.index);
 
         const itemElement = e.currentTarget;
-        setTimeout(() =>  itemElement.style.display = "none", 10);
+        setTimeout(() => itemElement.style.display = "none", 10);
         this.props.item.isDragging = true;
     }
 
@@ -28,11 +28,14 @@ export class ItemView extends React.Component<ItemProps, ItemState> {
         const item = this.props.item;
         const combinedPath = "public/assets/items/150x150-item-" + item.image + "-" + item.partType[0] + ".png";
 
-        return <div style={{top: item.posY + "px", left: item.posX + "px"}} className="item"
+        return <div style={{
+            top: item.posY + "px", left: item.posX + "px",
+            animation: "rotation " + item.rotationSpeed + "s infinite linear", animationDirection: item.rotationDirection
+        }} className="item"
             draggable
             onDragStart={e => this.onDragStart(e)}
-            onDragEnd={e =>this.onDragEnd(e)}>
-                {item.image ? <img src={combinedPath} /> : item.name}
-            </div>
+            onDragEnd={e => this.onDragEnd(e)}>
+            {item.image ? <img src={combinedPath} /> : item.name}
+        </div>
     }
 }

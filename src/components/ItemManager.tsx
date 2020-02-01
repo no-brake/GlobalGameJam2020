@@ -20,7 +20,7 @@ export class ItemManager extends React.Component<ItemManagerProps, ItemManagerSt
         var list:JSX.Element[] = [];
         for(let i = 0; i < this.props.game.items.length; i++){
             const item = this.props.game.items[i];
-            list.push(<Item name={item.name} start={item.start}></Item>)
+            list.push(<Item key={"item_" + i} name={item.name} start={item.start}></Item>)
         }
 
         return <div className="item-manager">

@@ -141,21 +141,23 @@ export class Game {
 		return (Math.random() * (max - min) + min);
 	}
 
-	public createItem(){
+	public createItem() {
+		const availableItems = ["banane", "bear", "croissant", "einhorn", "laptop", "pizza", "uboot", "uhr"];
 		const partTypes = ["left", "right"];
-			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
-			let randomX: number = (this.randomNumber(0, 150));
-			let randomY: number = (this.randomNumber(0, 150));
+		const selectedItem = availableItems[Math.floor(Math.random() * availableItems.length)];
+		const selectedPartType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
-			if (Math.random() >= 0.5) {
-				randomY = -100;
-			} else {
-				randomX = -100;
-			}
+		let randomX: number = this.randomNumber(0, 150);
+		let randomY: number = this.randomNumber(0, 150);
 
-			let test: Item = new Item(partType, randomX, randomY, partType);
-			return test;
+		if (Math.random() >= 0.5) {
+			randomY = -100;
+		} else {
+			randomX = -100;
+		}
+
+		return new Item(selectedPartType, randomX, randomY, selectedPartType, selectedItem);
 	}
 
 	public update() {
@@ -201,7 +203,7 @@ export class Game {
 				this.move(this.items[i]);
 			}
 		}
-		
+
 		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
 		if (benches.length > 0) {
 			const left = this.items.filter((obj) => obj.partType === "left" && !obj.isDragging);

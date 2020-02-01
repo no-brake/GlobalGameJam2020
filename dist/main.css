@@ -279,27 +279,28 @@ progress[value] {
 .item {
     position: absolute;
     display: block;
-    width: 64px;
-    height: 64px;
+    width: 150px;
+    height: 150px;
 
     z-index: 999;
+}
 
-    background-color: dodgerblue;
-    border: 2px dashed skyblue;
+.workbench-item {
+    position: absolute;
+    display: block;
+
+    width: 70px;
+    height: auto;
 }
 
 .left-item {
-    position: absolute;
-    display: block;
-    top: 120px;
-    left: 60px;
+    top: 100px;
+    left: 50px;
 }
 
 .right-item {
-    position: absolute;
-    display: block;
-    top: 120px;
-    right: 60px;
+    top: 100px;
+    right: 50px;
 }
 
 .workbench {

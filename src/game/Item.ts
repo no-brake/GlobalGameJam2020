@@ -11,12 +11,14 @@ export class Item {
     public speedY: number;
 
     public partType: string;
+    public image: string;
 
-    constructor(name: string, posX: number, posY: number, partType: string = "left"){
+    constructor(name: string, posX: number, posY: number, partType: string = "left", image: string = ""){
         this.name = name;
         this.posX = posX;
         this.posY = posY;
         this.partType = partType;
+        this.image = image;
 
         this.isDragging = false;
 

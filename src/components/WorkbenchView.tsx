@@ -39,7 +39,8 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
 
     render() {
         const workbench = this.props.game.workbenchs[this.props.index];
-        const items = workbench.items;
+        const leftItem = workbench.items[0];
+        const rightItem = workbench.items[1];
 
         const level = this.props.game.workbenchs[this.props.index].level;
         let body = <BuildWorkBenchButton game={this.props.game} index={this.props.index}></BuildWorkBenchButton>;
@@ -47,6 +48,17 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
         const isProgressBarVisible = this.props.game.workbenchs[this.props.index].progressBarVisibility;
 
         if (level > 0) {
+            let leftImage = null;
+            let rightImage = null;
+            if (leftItem) {
+                const leftPath = "public/assets/items/150x150-item-" + leftItem.image + "-" + leftItem.partType[0] + ".png";
+                leftImage = <img className="workbench-item left-item" src={leftPath} />;
+            }
+            if (rightItem) {
+                const rightPath = "public/assets/items/150x150-item-" + rightItem.image + "-" + rightItem.partType[0] + ".png";
+                rightImage = <img className="workbench-item right-item" src={rightPath} />;
+            }
+
             body =
                 <div className="grid-container workbench"
                 onDrop={e => this.onDrop(e)}
@@ -59,8 +71,8 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
                         <UpgradeWorkbenchButton game={this.props.game} index={this.props.index}></UpgradeWorkbenchButton>
                         <RepairButton game={this.props.game} index={this.props.index}></RepairButton>
                     </div>
-                    {items[0] ? <div className="left-item">L</div> : null}
-                    {items[1] ? <div className="right-item">R</div> : null}
+                    {leftImage}
+                    {rightImage}
                 </div>;
         }
 

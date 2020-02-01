@@ -55,8 +55,8 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
                     { isProgressBarVisible ? <ProgressBar game={this.props.game} index={this.props.index}></ProgressBar> : <div className="progressbar-placeholder"></div>}
                     <img className="centered-image workbench-image" src={"public/assets/items/400x400-workbench-level0" + level + ".png"} alt="Workbench Level 1" />
                     <div className="icon-grid-container">
-                    <UpgradeWorkbenchButton game={this.props.game} index={this.props.index}></UpgradeWorkbenchButton>
-                    <RepairButton game={this.props.game} index={this.props.index}></RepairButton>
+                        <UpgradeWorkbenchButton game={this.props.game} index={this.props.index}></UpgradeWorkbenchButton>
+                        <RepairButton game={this.props.game} index={this.props.index}></RepairButton>
                     </div>
                     {items[0] ? <div className="left-item">L</div> : null}
                     {items[1] ? <div className="right-item">R</div> : null}

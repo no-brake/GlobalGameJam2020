@@ -51,7 +51,11 @@
     color: black;
 }
 
-.base-button:hover {
+.base-button:disabled {
+    background-color: lightgray;
+}
+
+.base-button:hover:enabled {
     border: 2px solid yellowgreen;
     background-color: rgba(126, 126, 126, 0.041);
     color: rgba(0, 0, 0, 0.596);
@@ -137,7 +141,7 @@ progress[value] {
     justify-self: center;
 }
 
-.repair-button:hover {
+.repair-button:hover:enabled {
     background-image: url("./assets/icons/repair_hover.png");
 }
 

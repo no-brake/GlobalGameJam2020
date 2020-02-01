@@ -12,7 +12,7 @@ export class Workbench {
     public progressBarTimeStamp: number;
     public progressBarVisibility: boolean;
 
-    public items: Item[] = [];
+    public items: Item[];
     public itemPartTypes: string[];
     public canRepair: boolean;
 
@@ -27,6 +27,7 @@ export class Workbench {
         this.game = game;
 
         this.itemPartTypes = ["left", "right"];
+        this.items = new Array(this.itemPartTypes.length).fill(undefined);
         this.canRepair = false;
     }
 
@@ -42,8 +43,16 @@ export class Workbench {
             this.game.items.splice(itemIndex, 1);
         }
 
-        if (this.itemPartTypes.length === this.items.length && this.items.filter(item => item)) {
+        if (this.itemPartTypes.length === this.items.length && !this.items.some(item => item == undefined)) {
             this.canRepair = true;
         }
+    }
+
+    public finished() {
+        this.items = new Array(this.itemPartTypes.length).fill(undefined);
+        this.progressBarVisibility = false;
+        this.canRepair = false;
+        this.isLoading = false;
+        this.progressBarTimeStamp = 0;
     }
 }	

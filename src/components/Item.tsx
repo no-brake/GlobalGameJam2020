@@ -4,7 +4,13 @@ export interface ItemProps {}
 export interface ItemState {}
 
 export class Item extends React.Component<ItemProps, ItemState> {
+    /*
+    
+        startPos
+        endPos
+
+    */
     render() {
-        return <button className="base-button item-button">Add</button>;
+        return <div className="item">###ITEM###</div>;
     }
 }

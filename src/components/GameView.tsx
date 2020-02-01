@@ -31,7 +31,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         return (
             <div>
                 <ItemManager game={this.props.game}></ItemManager>
-                This is GameView! Last tick: {game.tick}.
+                <span className="white-text">This is GameView! Last tick: {game.tick}.</span>
                 <CoinView game={game}></CoinView>
                 <div className="workbench-grid-container">
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>

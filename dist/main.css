@@ -181,6 +181,10 @@ progress[value]::-webkit-progress-value {
     border: 2px dashed orange;
 }
 
+.white-text {
+    color: white;
+}
+
 .bgimg{
     position: absolute;
     width:100%;

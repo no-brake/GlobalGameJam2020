@@ -80,7 +80,9 @@ export class Game {
 	}
 
 	public gameLoop() {
-		requestAnimationFrame(() => this.gameLoop());
+		// requestAnimationFrame(() => this.gameLoop());
+		setTimeout(() => this.gameLoop(), 500);
+		
 		if (this.pause) return;
 
 		const currentTime = Date.now();
@@ -106,20 +108,19 @@ export class Game {
 	}
 
 	public update() {
-		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
-
+			
 			this.items.push(new Item(partType, Math.random() * 500, Math.random() * 500, partType));
 			this.lastItemPushed = Date.now();
 		}
-
+		
 		if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}
-
+		
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
@@ -131,5 +132,7 @@ export class Game {
 				}
 			}
 		});
+
+		this.tick++;
 	}
 }

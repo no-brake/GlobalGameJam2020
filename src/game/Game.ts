@@ -143,6 +143,9 @@ export class Game {
 	}
 
 	public combineItems(leftItem: Item, rightItem: Item) {
+		this.addCoins(1);
+		return;
+		
 		const value = combinationLookup[leftItem.name][rightItem.name];
 		if (!this.combinationTracker[leftItem.name]) {
 			this.combinationTracker[leftItem.name] = {};

@@ -6,6 +6,7 @@ import { WorkbenchView } from "./WorkbenchView";
 import { ItemManager } from "./ItemManager";
 import { ItemBucket } from "./ItemBucket";
 import { BackgroundAudio } from "./BackgroundAudio";
+import { CoinView } from "./CoinView"
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -31,6 +32,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div>
                 <ItemManager game={this.props.game}></ItemManager>
                 This is GameView! Last tick: {game.tick}.
+<<<<<<< HEAD
                 <table className="workbench-table">
                     <tr>
                         <td><WorkbenchView game={this.props.game} index={0}></WorkbenchView></td>
@@ -51,6 +53,10 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
                 {/* <div className="workbench-grid-container">
                     <
+=======
+                <CoinView game={game}></CoinView>
+                <div className="workbench-grid-container">
+>>>>>>> d991ae82e526fe449d10c7367f096b341507e5f2
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={1}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={2}></WorkbenchView>

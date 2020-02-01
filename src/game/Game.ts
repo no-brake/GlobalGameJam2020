@@ -17,6 +17,8 @@ export class Game {
 	public lastItemDeleted: number;
 	public maxItems: number;
 
+	public coins: number;
+
 	public externalRedraw: () => void;
 
 	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
@@ -33,6 +35,8 @@ export class Game {
 		this.lastItemPushed = Date.now();
 		this.lastItemDeleted = Date.now();
 		this.maxItems = 5;
+
+		this.coins = 0;
 
 		this.pause = false;
 
@@ -102,8 +106,6 @@ export class Game {
 	}
 
 	public update() {
-
-
 		this.tick++;
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
@@ -118,6 +120,7 @@ export class Game {
 			this.lastItemDeleted = Date.now();
 		}
 
+<<<<<<< HEAD
 		this.workbenchs.forEach(element => {
 			if (element.progressBarTimeStamp > 0) {
 				if (element.progressValue < 100) {
@@ -127,6 +130,16 @@ export class Game {
 					element.isLoading = false;
 					element.progressValue = 0;
 					element.progressBarTimeStamp = 0;
+=======
+		this.workbenchs.forEach(workbench => {
+			if (workbench.progressBarTimeStamp > 0) {
+				if (workbench.progressValue < 100) {
+					workbench.progressValue = (Date.now() - workbench.progressBarTimeStamp) / 100;
+				}
+				else {
+					workbench.finished();
+					this.coins += 100;
+>>>>>>> d991ae82e526fe449d10c7367f096b341507e5f2
 				}
 			}
 		});

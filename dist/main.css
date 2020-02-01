@@ -1,3 +1,23 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 200px;
+
+}
+
+.centered-image {
+    background-position: center;
+}
+
+.workbench-image {
+    width: 200px;
+    height: 200px;
+}
+
+/* .workbench-image-container {
+    max-width: 400;
+    max-height: 400;
+} */
+
 .base-button {
     padding: 20px;
     border: 2px solid transparent;
@@ -12,14 +32,48 @@
 }
 
 .build-workbench-button {
-    color: black;
     background-image: url("./assets/icons/plus.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 24px;
+    width: 48px;
+    height: 48px;
+
 }
 
 .build-workbench-button:hover {
     background-image: url("./assets/icons/plus_hover.png");
+}
+
+.upgrade-workbench-button {
+    background-image: url("./assets/icons/up.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 24px;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    top: 60px;
+    left: 5px;
+}
+
+.upgrade-workbench-button:hover {
+    background-image: url("./assets/icons/up_hover.png");
+}
+
+.repair-button {
+    background-image: url("./assets/icons/repair.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    bottom: 50px;
+    left: 75px;
+}
+
+.repair-button:hover {
+    background-image: url("./assets/icons/repair_hover.png");
 }
 

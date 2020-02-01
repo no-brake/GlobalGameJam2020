@@ -149,3 +149,25 @@ progress[value] {
     background-color: dodgerblue;
     border: 2px dashed skyblue;
 }
+
+.left-item {
+    position: absolute;
+    display: block;
+    top: 120px;
+    left: 60px;
+}
+
+.right-item {
+    position: absolute;
+    display: block;
+    top: 120px;
+    right: 60px;
+}
+
+.workbench {
+    position: relative;
+}
+
+.workbench.drag-over {
+    border: 2px dashed orange;
+}

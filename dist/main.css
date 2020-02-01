@@ -297,6 +297,10 @@ progress[value] {
     outline: 5px dashed orange;
 }
 
+.coins {
+    width: 150px;
+}
+
 .white-text {
     color: white;
 }
@@ -310,4 +314,24 @@ progress[value] {
     right: 620px;
 
     background-color: lightpink;
+}
+
+.floating-coin {
+    position: absolute;
+    animation: floatingCoin 1.6s ease-out;
+    animation-fill-mode: forwards;
+
+    color: yellow;
+    font-size: 20pt;
+}
+
+@keyframes floatingCoin {
+    from {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
 }

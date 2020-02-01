@@ -20,7 +20,7 @@ export class Game {
 	public externalRedraw: () => void;
 
 	public workbenchs: Array<Workbench> = new Array<Workbench>(6);
-	public items: {name: string, start: number}[] = [];
+	public items: { name: string, start: number }[] = [];
 
 	public constructor() {
 
@@ -53,14 +53,14 @@ export class Game {
 
 	public loadGame() {
 		const saveState = JSON.parse(localStorage.getItem("saveGame")) as SaveState;
-		
+
 		this.tick = saveState.tick;
 		this.workbenchs = saveState.workbenches;
 		this.items = saveState.items;
 
 		console.log("Game state restored (Tick " + this.tick + ")");
 	}
-	
+
 	public gameStart() {
 		this.lastUpdate = Date.now();
 
@@ -109,7 +109,7 @@ export class Game {
 			this.lastItemPushed = Date.now();
 		}
 
-		if(Date.now() - this.lastItemDeleted > 10000){
+		if (Date.now() - this.lastItemDeleted > 10000) {
 			this.items.shift();
 			this.lastItemDeleted = Date.now();
 		}

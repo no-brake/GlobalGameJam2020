@@ -18,6 +18,7 @@ export class Game {
 	public maxItems: number;
 
 	public coins: number;
+	public coinUpdates: {amount: number, offsetX: number, offsetY: number, endOfLife: number}[];
 
 	public externalRedraw: () => void;
 
@@ -36,6 +37,7 @@ export class Game {
 		this.maxItems = 5;
 
 		this.coins = 0;
+		this.coinUpdates = [];
 
 		this.pause = false;
 
@@ -73,9 +75,18 @@ export class Game {
 		this.items.splice(itemIndex, 1);
 
 		this.lastItemDeleted = Date.now();
-		this.coins += 10;
+		this.addCoins(10);
 
 		this.externalRedraw();
+	}
+
+	public addCoins(amount: number) {
+		this.coins += amount;
+
+		const offsetX = Math.random() * 200 - 100;
+		const offsetY = Math.random() * 40 - 20;
+		const endOfLife = Date.now() + 5000;
+		this.coinUpdates.push({amount, offsetX, offsetY, endOfLife});
 	}
 
 	public gameStart() {
@@ -133,7 +144,9 @@ export class Game {
 	}
 
 	public update() {
-		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
+		const now = Date.now();
+
+		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
@@ -160,6 +173,14 @@ export class Game {
 		// 	this.lastItemDeleted = Date.now();
 		// }
 
+		// Remove old coin update animations
+		for (let i = this.coinUpdates.length - 1; i >= 0; i--) {
+			const coin = this.coinUpdates[i];
+			if (coin.endOfLife < now) {
+				this.coinUpdates.splice(i, 1);
+			}
+		}
+
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
@@ -167,7 +188,7 @@ export class Game {
 				}
 				else {
 					workbench.finished();
-					this.coins += 100;
+					this.addCoins(100);
 				}
 			}
 		});
@@ -178,6 +199,28 @@ export class Game {
 			} else {
 				this.move(this.items[i]);
 			}
+		var left = this.items.filter((obj) => obj.name === "left");
+		var right = this.items.filter((obj) => obj.name === "right");
+		var benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.isLoading === false && obj && obj.items.filter(i => i == null).length == 2);
+
+		if (Math.min(left.length, right.length, benches.length) > 0) {
+			//get first element available of each piece an workbench
+			const leftPiece = left[0];
+			const rightPiece = right[0];
+			benches[0].items = [leftPiece, rightPiece];
+			
+			//remove pieces from available resources
+			const indexLeft = this.items.indexOf(leftPiece, 0);
+			const indexRight = this.items.indexOf(rightPiece, 0);
+			if (indexLeft > -1 && indexRight > -1) {
+				this.items.splice(indexLeft, 1);
+				this.items.splice(indexRight, 1);
+			}
+
+			//add pieces to workbench and activate progressbar
+			benches[0].isLoading = true;
+			benches[0].progressBarTimeStamp = Date.now();
+			benches[0].progressBarVisibility = true;
 		}
 
 		this.tick++;

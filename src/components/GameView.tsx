@@ -37,6 +37,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                     <WorkbenchView game={this.props.game} index={4}></WorkbenchView>
                     <WorkbenchView game={this.props.game} index={5}></WorkbenchView>
                 </div>
+                <button onClick={() => game.pause = !game.pause}>Play/Pause</button>
                 <button onClick={() => game.saveGame()}>Save Game</button>
                 <button onClick={() => game.loadGame()}>Load Game</button>
             </div>

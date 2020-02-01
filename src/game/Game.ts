@@ -27,6 +27,7 @@ export class Game {
 		this.items.push(new Item("name", Math.random() * 20));
 		this.lastItemPushed = Date.now();
 		this.lastItemDeleted = Date.now();
+		this.maxItems = 5;
 
 		this.pause = false;
 
@@ -73,7 +74,7 @@ export class Game {
 	public update() {
 
 		this.tick++;
-		if (Date.now() - this.lastItemPushed > 2000) {
+		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			this.items.push(new Item("name", Math.random() * 300));
 			this.lastItemPushed = Date.now();
 		}

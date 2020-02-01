@@ -27,7 +27,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         return (
             <div>
-                <ItemManager maxNo={5} game={this.props.game}></ItemManager>
+                <ItemManager game={this.props.game}></ItemManager>
                 This is GameView! Last tick: {game.tick}.
                 <div>
                     <WorkbenchView game={this.props.game} index={0}></WorkbenchView>

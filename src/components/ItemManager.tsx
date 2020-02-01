@@ -3,7 +3,6 @@ import { Item } from "./Item";
 import { Game } from "game/Game";
 
 export interface ItemManagerProps {
-    maxNo: number,
     game: Game,
 }
 export interface ItemManagerState {

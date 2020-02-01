@@ -117,8 +117,8 @@ body {
 } */
 
 .base-button {
-    padding: 20px;
-    border: 2px solid transparent;
+    padding: 0px;
+    border: 0px solid transparent;
     background-color: transparent;
     color: black;
 }
@@ -128,25 +128,7 @@ body {
 }
 
 .base-button:hover:enabled {
-    border: 2px solid yellowgreen;
-    background-color: rgba(126, 126, 126, 0.041);
-    color: rgba(0, 0, 0, 0.596);
-}
 
-.build-workbench-button {
-    background-image: url("./assets/icons/plus.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 48px;
-    width: 96px;
-    height: 96px;
-    align-self: center;
-    justify-self: center;
-    margin: auto;
-}
-
-.build-workbench-button:hover {
-    background-image: url("./assets/icons/plus_hover.png");
 }
 
 progress {
@@ -213,11 +195,27 @@ progress[value] {
     height: 20px;
 }
 
+.build-workbench-button {
+    background-image: url("./assets/icons/plus.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 96px;
+    height: 96px;
+    align-self: center;
+    justify-self: center;
+    margin: auto;
+}
+
+.build-workbench-button:hover {
+    background-image: url("./assets/icons/plus_hover.png");
+}
+
 .upgrade-workbench-button {
     background-image: url("./assets/icons/up.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 24px;
+    background-size: 48px;
     width: 48px;
     height: 48px;
     align-self: center;
@@ -232,7 +230,7 @@ progress[value] {
     background-image: url("./assets/icons/repair.png");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 24px;
+    background-size: 48px;
     width: 48px;
     height: 48px;
     align-self: center;

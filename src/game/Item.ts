@@ -1,6 +1,6 @@
 // type PartType = "left" | "right";
 
-export class Item{
+export class Item {
     public name: string;
     public isDragging: boolean;
 

@@ -278,7 +278,7 @@ progress[value] {
     position: relative;
 }
 
-.workbench.drag-over {
+.drag-over {
     outline: 5px dashed orange;
 }
 
@@ -286,3 +286,13 @@ progress[value] {
     color: white;
 }
 
+.trashcan {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+
+    top: 60px;
+    right: 620px;
+
+    background-color: lightpink;
+}

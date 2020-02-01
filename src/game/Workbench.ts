@@ -56,4 +56,45 @@ export class Workbench {
         this.progressBarTimeStamp = 0;
         this.progressValue = 0;
     }
-}	
+
+    public toSaveState() {
+        return {
+            level: this.level,
+            isLoading: this.isLoading,
+            progressValue: this.progressValue,
+            type: this.type,
+            progressBarTimeStamp: this.progressBarTimeStamp,
+            progressBarVisibility: this.progressBarVisibility,
+            items: this.items,
+            itemPartTypes: this.itemPartTypes,
+            canRepair: this.canRepair
+        };
+    }
+
+    public static fromSaveState(state: any, game: Game) {
+        const {
+            level,
+            isLoading,
+            progressValue,
+            type,
+            progressBarTimeStamp,
+            progressBarVisibility,
+            items,
+            itemPartTypes,
+            canRepair
+        } = state;
+
+        const wb = new Workbench(game);
+        wb.level = level;
+        wb.isLoading = isLoading;
+        wb.progressValue = progressValue;
+        wb.type = type;
+        wb.progressBarTimeStamp = progressBarTimeStamp;
+        wb.progressBarVisibility = progressBarVisibility;
+        wb.items = items;
+        wb.itemPartTypes = itemPartTypes;
+        wb.canRepair = canRepair;
+
+        return wb;
+    }
+}

@@ -7,6 +7,7 @@ import { ItemManager } from "./ItemManager";
 import { ItemBucket } from "./ItemBucket";
 import { BackgroundAudio } from "./BackgroundAudio";
 import { CoinView } from "./CoinView"
+import { Trashcan } from "./Trashcan";
 
 export interface GameViewProps { game: Game }
 export interface GameViewState { }
@@ -52,8 +53,9 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
                 <button onClick={() => game.loadGame()}>Load Game</button> */}
                 <BackgroundAudio></BackgroundAudio>
 
-                <div className="workbench-area">
+                <Trashcan game={game}></Trashcan>
 
+                <div className="workbench-area">
                     <table className="workbench-table">
                         <tbody>
                             <tr>

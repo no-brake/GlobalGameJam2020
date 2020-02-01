@@ -13,7 +13,8 @@ export class ItemView extends React.Component<ItemProps, ItemState> {
     onDragStart(e: React.DragEvent<HTMLElement>) {
         e.dataTransfer.setData("index", "" + this.props.index);
 
-        e.currentTarget.style.display = "none";
+        const itemElement = e.currentTarget;
+        setTimeout(() =>  itemElement.style.display = "none", 10);
         this.props.item.isDragging = true;
     }
 

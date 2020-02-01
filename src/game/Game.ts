@@ -120,19 +120,45 @@ export class Game {
 
 	}
 
+	public move(item: Item) {
+		let xSpeed = Math.random();
+		let ySpeed = Math.random();
+
+		item.posX += xSpeed;
+		item.posY += ySpeed;
+	}
+
+	public randomNumber(min: number, max: number) {
+		return (Math.random() * (max - min) + min) / 10;
+	}
+
 	public update() {
 		if (Date.now() - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			const partTypes = ["left", "right"];
 			const partType = partTypes[Math.floor(Math.random() * partTypes.length)];
 
-			this.items.push(new Item(partType, Math.random() * 500, 100 + Math.random() * 500, partType));
+			let randomX: number = 100 + (this.randomNumber(0, 5)) * 500;
+			let randomY: number = 100 + (this.randomNumber(0, 5)) * 500;
+
+			if (Math.random() >= 0.5) {
+				randomY = -100;
+			} else {
+				randomX = -100;
+			}
+
+			let test: Item = new Item(partType, randomX, randomY, partType);
+
+			this.items.push(test);
+
 			this.lastItemPushed = Date.now();
 		}
 
-		if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
-			this.items.shift();
-			this.lastItemDeleted = Date.now();
-		}
+
+
+		// if (Date.now() - this.lastItemDeleted > 10000 && !this.items[0].isDragging) {
+		// 	this.items.shift();
+		// 	this.lastItemDeleted = Date.now();
+		// }
 
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
@@ -145,6 +171,14 @@ export class Game {
 				}
 			}
 		});
+
+		for (let i = this.items.length - 1; i >= 0; i--) {
+			if (this.items[i].posY > 760 || this.items[i].posX > 1200) {
+				this.items.splice(i, 1);
+			} else {
+				this.move(this.items[i]);
+			}
+		}
 
 		this.tick++;
 	}

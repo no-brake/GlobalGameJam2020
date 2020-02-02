@@ -52,6 +52,10 @@ export class Game {
 			new Tech("Bigger", 101),
 			new Tech("Faster", 102),
 			new Tech("Better", 103),
+			new Tech("2x Money - 1", 10),
+			new Tech("2x Money - 2", 100, ["2x Money - 1"]),
+			new Tech("2x Money - 3", 200, ["2x Money - 2"]),
+			new Tech("2x Money - 4", 500, ["2x Money - 3"]),
 			new Tech("+1", 10),
 			new Tech("+2", 50),
 			new Tech("+3", 150),
@@ -102,12 +106,20 @@ export class Game {
 	}
 
 	public addCoins(amount: number) {
-		this.coins += amount;
+		let modfiedAmount = amount;
+
+		// Value modifiers
+		modfiedAmount *= this.isResearched("2x Money - 1") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 2") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 3") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 4") ? 2 : 1;
+
+		this.coins += modfiedAmount;
 
 		const offsetX = Math.random() * 200 - 100;
 		const offsetY = Math.random() * 40 - 20;
 		const endOfLife = Date.now() + 5000;
-		this.coinUpdates.push({ amount, offsetX, offsetY, endOfLife });
+		this.coinUpdates.push({ amount: modfiedAmount, offsetX, offsetY, endOfLife });
 	}
 
 	public gameStart() {
@@ -178,6 +190,15 @@ export class Game {
 		if (this.coins >= tech.cost) {
 			this.coins -= tech.cost;
 			tech.isResearched = true;
+
+			for (const t of this.techs) {
+				const index = t.requirements.indexOf(tech.name);
+				if (index < 0) {
+					t.requirements.splice(index, 1);
+				}
+
+				t.requirementsFullfilled = t.requirements.length === 0;
+			}
 		}
 	}
 

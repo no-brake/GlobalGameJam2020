@@ -1,0 +1,39 @@
+.dropbox {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: 10px dashed white;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	height: 125px;
+	padding: 20px;
+    width: 125px;
+}
+
+div.wrap {
+width: 500px;
+height: 500px;
+background-color: darkblue;
+}
+
+.interact-btn {
+background-color: rgba(0, 0, 0, 0.5);
+border: none;
+-moz-border-radius: 50%;
+border-radius: 50%;
+box-shadow: 2px 2px 2px black;
+height: 100px;
+width: 100px;
+
+}
+
+.div-btn button:focus {
+background-color: rgba(0, 0, 0, 0.2);
+outline:0;
+}
+
+div.dialog {
+border: 5px solid #01d4e7;
+color: white;
+height: 10em;
+padding: 15px;
+width: 10em;
+}

@@ -163,7 +163,7 @@ export class Game {
 	public createItem(numberOfItems: number) {
 		let items: Item[] = [];
 		for (let i = 0; i < numberOfItems; i++) {
-			const availableItems = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship"];
+			const availableItems = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship", "lego"];
 			const partTypes = ["left", "right"];
 			const rotationDirection = Math.random() > 0.5 ? 1 : -1;
 			const rotationSpeed = Math.random() * 10;

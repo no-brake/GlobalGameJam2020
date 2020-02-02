@@ -20,21 +20,26 @@ export class WorkbenchView extends React.Component<WorkbenchViewProps, Workbench
         const index = parseInt(e.dataTransfer.getData('index'));
         this.props.game.workbenchs[this.props.index].addItem(index);
 
-        e.currentTarget.classList.remove("drag-over");
+        e.currentTarget.classList.add("workbench");
+        e.currentTarget.classList.remove("workbench-drag-over");
+
     }
 
     onDragOver(e: React.DragEvent<HTMLElement>) {
         e.preventDefault();
+        e.currentTarget.classList.add("workbench-drag-over");
+        e.currentTarget.classList.remove("workbench");
 
-        e.currentTarget.classList.add("drag-over");
     }
 
     onDragEnter(e: React.DragEvent<HTMLElement>) {
-        e.currentTarget.classList.add("drag-over");
+        e.currentTarget.classList.add("workbench-drag-over");
+        e.currentTarget.classList.remove("workbench");
     }
 
     onDragLeave(e: React.DragEvent<HTMLElement>) {
-        e.currentTarget.classList.remove("drag-over");
+        e.currentTarget.classList.add("workbench");
+        e.currentTarget.classList.remove("workbench-drag-over");
     }
 
     render() {

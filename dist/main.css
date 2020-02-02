@@ -53,7 +53,7 @@ body {
 } */
 
 .workbench-table {
-    border: 3px solid rgba(1, 212, 231, 1);
+    /* border: 3px solid rgba(1, 212, 231, 1); */
     align-items: center;
     justify-items: center;
     align-content: center;
@@ -62,7 +62,7 @@ body {
 }
 
 .workbench-table td {
-    border: 3px solid rgba(1, 212, 231, 1);
+    border: 5px solid rgba(1, 212, 231, 1);
     /* padding: 8px; */
     align-items: center;
     justify-items: center;
@@ -132,6 +132,20 @@ body {
     background-color: lightgray;
 }
 
+.progressbar {
+    position: relative;
+    width: 150px;
+    height: 20px;
+    top: 42px;
+}
+
+.progressbar-placeholder {
+    position: relative;
+    top: 75px;
+    width: 150px;
+    height: 20px;
+}
+
 progress {
     border: 1px solid black;
     height: 20px;
@@ -185,20 +199,8 @@ progress[value] {
     background-size: 35px 20px, 100% 100%, 100% 100%;
 } */
 
-.progressbar {
-    position: relative;
-    top: 75px;
-}
-
-.progressbar-placeholder {
-    position: relative;
-    top: 75px;
-    width: 175px;
-    height: 20px;
-}
-
 .build-workbench-button {
-    background-image: url("./assets/icons/plus.png");
+    background-image: url("./assets/icons/100x100-buy-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -210,11 +212,11 @@ progress[value] {
 }
 
 .build-workbench-button:hover {
-    background-image: url("./assets/icons/plus_hover.png");
+    background-image: url("./assets/icons/100x100-buy-icon-hover.png");
 }
 
 .plus-one-button {
-    background-image: url("./assets/icons/50x50-plusone-icon.png");
+    background-image: url("./assets/icons/100x100-plus1-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -226,11 +228,11 @@ progress[value] {
 }
 
 .plus-one-button:hover {
-    background-image: url("./assets/icons/50x50-plusone-icon-hover.png");
+    background-image: url("./assets/icons/100x100-plus1-hover.png");
 }
 
 .sell-button {
-    background-image: url("./assets/icons/50x50-sell-icon.png");
+    background-image: url("./assets/icons/100x100-sell.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -241,13 +243,13 @@ progress[value] {
     margin: auto;
 }
 
-.sell-button:hover {
-    background-image: url("./assets/icons/50x50-sell-icon-hover.png");
-}
+/* .sell-button:hover {
+    background-image: url("./assets/icons/100x100-sell-hover.png");
+} */
 
 
 .upgrade-workbench-button {
-    background-image: url("./assets/icons/up.png");
+    background-image: url("./assets/icons/100x100-upgrade-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 48px;
@@ -258,11 +260,11 @@ progress[value] {
 }
 
 .upgrade-workbench-button:hover {
-    background-image: url("./assets/icons/up_hover.png");
+    background-image: url("./assets/icons/100x100-upgrade-icon-hover.png");
 }
 
 .repair-button {
-    background-image: url("./assets/icons/repair.png");
+    background-image: url("./assets/icons/100x100-wrench-icon.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 48px;
@@ -273,7 +275,7 @@ progress[value] {
 }
 
 .repair-button:hover:enabled {
-    background-image: url("./assets/icons/repair_hover.png");
+    background-image: url("./assets/icons/100x100-wrench-icon-hover.png");
 }
 
 .repair-button:disabled, button[disabled] {
@@ -307,6 +309,20 @@ progress[value] {
     color: transparent;
 }
 
+.dropbox {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: 5px dashed rgba(1, 212, 231, 1);
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	height: 75px;
+	padding: 20px;
+    width: 75px;
+}
+
+.drag-over {
+    border: 5px dashed orange;
+}
+
 .item {
     position: absolute;
     display: block;
@@ -334,10 +350,12 @@ progress[value] {
 
 .workbench {
     position: relative;
+    border: 5px dashed rgba(1, 212, 231, 1);
 }
 
-.drag-over {
-    outline: 5px dashed orange;
+.workbench-drag-over {
+    position: relative;
+    border: 5px dashed orange;
 }
 
 .coins {

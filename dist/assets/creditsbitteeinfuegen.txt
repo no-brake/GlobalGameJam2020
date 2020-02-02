@@ -1,4 +1,13 @@
-Quellen:
+Rift Repair Revolution
+GGj2020 InnoGames
+
+Team:
+Janice  - Art
+Julian  -
+Kim -
+Kristof -
+
+Ressources:
 Hintergrund: https://pixabay.com/illustrations/universe-sky-star-space-cosmos-1566159/
 Musik: Loop von Pudgyplatypus https://opengameart.org/content/royalty-free-game-music-loops
 Sounds:
@@ -6,7 +15,4 @@ Wrench - YourFriendJesse https://freesound.org/people/YourFriendJesse/sounds/131
 Pop - DuffyBro https://freesound.org/people/DuffyBro/sounds/319107/
 Cha ching - creek23 https://freesound.org/people/creek23/sounds/75235/
 GameAudio - https://freesound.org/people/GameAudio/sounds/220173/
-
-Fonts:
-
-Iconian Fonts - https://www.dafont.com/de/galaxy-1.font
+Fonts: Iconian Fonts - https://www.dafont.com/de/galaxy-1.font

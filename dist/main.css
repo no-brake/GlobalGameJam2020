@@ -385,12 +385,41 @@ progress[value] {
     color: white;
 }
 
+.monster-manual-button {
+    background-image: url("./assets/icons/100x100-buy-settings.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.monster-manual-button:hover {
+    background-image: url("./assets/icons/100x100-buy-settings-hover.png");
+}
+
+.general-upgrade-button {
+    background-image: url("./assets/icons/100x100-buy-settings.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.general-upgrade-button:hover {
+    background-image: url("./assets/icons/100x100-buy-settings-hover.png");
+}
+
 .action_button_container {
-    position: absolute;
-    width: 320px;
-    height: 160px;
-    top: 60px;
-    right: 580px;
+    /* position: absolute; */
+    /* width: 320px;
+    height: 160px; */
+    /* top: 60px;
+    right: 580px; */
+    margin: 15px;
     display: flex;
 }
 
@@ -414,6 +443,30 @@ progress[value] {
     font-size: 80px;
 }
 
+/* .monster-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+} */
+
+.monster-text {
+    color: white;
+    font-size: 20pt;
+    width: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.monster-coin {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
 .floating-coin {
     display: flex;
     justify-content: space-evenly;
@@ -435,8 +488,7 @@ progress[value] {
 }
 
 .floating-coin-image {
-    width: 50px;
-    height: 50px;
+
 }
 
 @keyframes floatingCoin {

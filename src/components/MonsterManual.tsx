@@ -11,7 +11,7 @@ export class MonsterManual extends React.Component<MonsterManualProps, MonsterMa
         const game = this.props.game;
 
         // for (const newCombination of game.newCombinations) {
-            
+
         // }
 
         const indices = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship", "lego"];
@@ -35,10 +35,15 @@ export class MonsterManual extends React.Component<MonsterManualProps, MonsterMa
                 const rarity = value < 20 ? "common" : value < 100 ? "uncommon" : value < 500 ? "rare" : value < 3000 ? "epic" : "legendary";
 
                 combinations.push(<div key={left + "-" + right} className={rarity}>
+                    
                     <img className="left" src={leftImgSrc} />
-                    <img className="right" src={rightImgSrc} />
-                    <div className="text">{name} - {value} coins</div>
-                </div>);
+                    <img className="right" src={rightImgSrc} /> 
+                        <div className="text">{name} - {value}
+                            <img src="./public/assets/items/100x100-coin-single.png" className="monster-coin" />
+                        </div>                    
+                    </div>
+
+                );
             }
         }
 

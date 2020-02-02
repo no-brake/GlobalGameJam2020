@@ -14,8 +14,8 @@ export class MonsterManual extends React.Component<MonsterManualProps, MonsterMa
             
         // }
 
-        const indices = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship", , "lego"];
-        const prefix = ["Ba", "Bär", "Cro", "Cro", "Ein", "Lap", "Piz", "Piz", "U-", "Uhr", "Space", , "Lego"];
+        const indices = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship", "lego"];
+        const prefix = ["Ba", "Bär", "Cro", "Cro", "Ein", "Lap", "Piz", "Piz", "U-", "Uhr", "Space", "Lego"];
         const postfix = ["nane", "bär", "sant", "sant", "horn", "top", "za", "za", "boot", "uhr", "ship", "go"];
 
         const basePath = "public/assets/items/150x150-item-";

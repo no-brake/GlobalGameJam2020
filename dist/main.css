@@ -38,15 +38,9 @@ body {
 .spawner {
     animation: rotation 50s infinite linear;
     position: absolute;
-<<<<<<< HEAD
-    top: -350px;
-    left: -850px;
-    background-image: url("./assets/background/gg20-spawn-img-2x.png");
-=======
     top: -224px;
     left: -250px;
-    background-image: url(./assets/background/gg20-spawn-img-2x.png);
->>>>>>> c55e05ad9c4f2b85bfcca8bc7b66479576263a12
+    background-image: url("./assets/background/gg20-spawn-img-2x.png");
     background-position: center;
     height: 488px;
     width: 500px;
@@ -383,6 +377,7 @@ progress[value] {
     margin: 25px 15px 0px 10px;
 }
 .coins {
+    width: 50px;
     text-align: center;
     vertical-align: middle;
     font-size: 20pt;
@@ -500,10 +495,6 @@ progress[value] {
     font-weight: bold;
 }
 
-.floating-coin-image {
-
-}
-
 @keyframes floatingCoin {
     from {
         transform: translateY(0px);
@@ -519,6 +510,29 @@ progress[value] {
     max-width: 100%;
     max-height: 100%;
     overflow: hidden;
+}
+
+.credits-container {
+    position: absolute;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    top: 50px;
+    left: 50px;
+
+    padding: 10px 0;
+
+    z-index: 9999;
+
+    width: calc(100% - 100px);
+    height: calc(100% - 100px);
+    
+    background-color: rgba(0,0,0,0.5);
+    border: 5px solid rgb(99, 242, 255);
+
+    overflow-y: scroll;
 }
 
 .monster-manual {
@@ -724,3 +738,34 @@ progress[value] {
     height: 35x;
     margin: 10px;
 }
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 500px;
+    background-color: black;
+    opacity: 0.9;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }

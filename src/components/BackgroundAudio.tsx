@@ -15,7 +15,7 @@ export class BackgroundAudio extends React.Component<BackgroundAudioProps, Backg
 
     render() {
         return (
-            <span>
+            <span className="backgroundAudioContainer">
                 <button onClick={(e) => this.MuteAudio(e)}>
                     <i className="material-icons">volume_off</i>
                 </button>

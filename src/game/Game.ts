@@ -139,6 +139,7 @@ export class Game {
 	public move(item: Item) {
 		item.posX += item.speedX;
 		item.posY += item.speedY;
+		item.angle += item.rotationSpeed * item.rotationDirection;
 	}
 
 	public combineItems(leftItem: Item, rightItem: Item) {
@@ -164,12 +165,11 @@ export class Game {
 		for (let i = 0; i < numberOfItems; i++) {
 			const availableItems = ["banane", "bear", "croissant", "croissant2", "einhorn", "laptop", "pizza", "pizza-ecke", "uboot", "uhr", "spaceship", "lego"];
 			const partTypes = ["left", "right"];
-			const rotationDirection = ["normal", "reverse"];
-			const rotationSpeed = Math.random() * 100;
+			const rotationDirection = Math.random() > 0.5 ? 1 : -1;
+			const rotationSpeed = Math.random() * 10;
 
 			const selectedItem = availableItems[Math.floor(Math.random() * availableItems.length)];
 			const selectedPartType = partTypes[Math.floor(Math.random() * partTypes.length)];
-			const selectedRotationDirection = rotationDirection[Math.floor(Math.random() * rotationDirection.length)];
 
 			let randomX: number = this.randomNumber(0, 150);
 			let randomY: number = this.randomNumber(0, 150);
@@ -180,7 +180,7 @@ export class Game {
 				randomX = -100;
 			}
 
-			let item: Item = new Item(selectedItem, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, selectedRotationDirection);
+			let item: Item = new Item(selectedItem, randomX, randomY, selectedPartType, selectedItem, rotationSpeed, rotationDirection);
 			items.push(item);
 		}
 		return items;
@@ -192,7 +192,7 @@ export class Game {
 		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
 			this.items.push(...this.createItem(1));
 
-			this.lastItemPushed = Date.now();
+			this.lastItemPushed = now;
 		}
 
 
@@ -213,7 +213,7 @@ export class Game {
 		this.workbenchs.forEach(workbench => {
 			if (workbench.progressBarTimeStamp > 0) {
 				if (workbench.progressValue < 100) {
-					workbench.progressValue = ((Date.now() - workbench.progressBarTimeStamp) / 100) * workbench.level * 2;
+					workbench.progressValue = ((now - workbench.progressBarTimeStamp) / 100) * workbench.level * 2;
 				}
 				else {
 					this.combineItems(workbench.items[0], workbench.items[1]);
@@ -253,10 +253,12 @@ export class Game {
 
 				//add pieces to workbench and activate progressbar
 				benches[0].isLoading = true;
-				benches[0].progressBarTimeStamp = Date.now();
+				benches[0].progressBarTimeStamp = now;
 				benches[0].progressBarVisibility = true;
 			}
 		}
+
+
 
 		this.tick++;
 	}

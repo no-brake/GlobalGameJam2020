@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Item } from "game/Item";
+import { rotationLookup } from "../game/RotationLookupTable";
 
 export interface ItemProps {
     name: string,
@@ -28,9 +29,12 @@ export class ItemView extends React.Component<ItemProps, ItemState> {
         const item = this.props.item;
         const combinedPath = "public/assets/items/150x150-item-" + item.image + "-" + item.partType[0] + ".png";
 
+        const origin = rotationLookup[item.name][item.partType == "left" ? "left" : "right"];
+
         return <div style={{
             top: item.posY + "px", left: item.posX + "px",
-            animation: "rotation " + item.rotationSpeed + "s infinite linear", animationDirection: item.rotationDirection
+            transformOrigin: origin.x + "px " + origin.y + "px",
+            transform: "rotate(" + item.angle + "deg)"
         }} className="item"
             draggable
             onDragStart={e => this.onDragStart(e)}

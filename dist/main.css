@@ -358,8 +358,24 @@ progress[value] {
     border: 5px dashed orange;
 }
 
+.coins-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
 .coins {
-    width: 150px;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.coins-image {
+    width: 50px;
+    height: 50px;
 }
 
 .white-text {
@@ -396,11 +412,28 @@ progress[value] {
 }
 
 .floating-coin {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
     position: absolute;
     animation: floatingCoin 1.6s ease-out;
     animation-fill-mode: forwards;
-    color: yellow;
+
+}
+
+.floating-coin-text {
+    color: white;
     font-size: 20pt;
+    width: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.floating-coin-image {
+    width: 50px;
+    height: 50px;
 }
 
 @keyframes floatingCoin {
@@ -588,4 +621,10 @@ progress[value] {
     border-bottom-right-radius: 5px;
 
     background-color: rgba(50, 50, 50, 0.5);
+}
+
+.backgroundAudioContainer{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }

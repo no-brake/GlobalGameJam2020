@@ -184,6 +184,10 @@ export class Game {
 		}
 	}
 
+	public isResearched(name: string) {
+		return this.techs.find(t => t.name === name)?.isResearched;
+	}
+
 	public randomNumber(min: number, max: number) {
 		return (Math.random() * (max - min) + min);
 	}
@@ -259,34 +263,34 @@ export class Game {
 			}
 		}
 
-		const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(i => !i).length >= 2);
+		if (this.isResearched("Automate Everything")) {
+			const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(i => !i).length >= 2);
+			
+			if (benches.length > 0) {
+				const left = this.items.filter(item => item.partType === "left" && !item.isDragging);
+				const right = this.items.filter(item => item.partType === "right" && !item.isDragging);
 
-		if (benches.length > 0) {
-			const left = this.items.filter(item => item.partType === "left" && !item.isDragging);
-			const right = this.items.filter(item => item.partType === "right" && !item.isDragging);
+				if (Math.min(left.length, right.length) > 0) {
+					//get first element available of each piece an workbench
+					const leftPiece = left[0];
+					const rightPiece = right[0];
+					benches[0].items = [leftPiece, rightPiece];
 
-			if (Math.min(left.length, right.length) > 0) {
-				//get first element available of each piece an workbench
-				const leftPiece = left[0];
-				const rightPiece = right[0];
-				benches[0].items = [leftPiece, rightPiece];
+					//remove pieces from available resources
+					const indexLeft = this.items.indexOf(leftPiece, 0);
+					const indexRight = this.items.indexOf(rightPiece, 0);
+					if (indexLeft > -1 && indexRight > -1) {
+						this.items.splice(indexLeft, 1);
+						this.items.splice(indexRight, 1);
+					}
 
-				//remove pieces from available resources
-				const indexLeft = this.items.indexOf(leftPiece, 0);
-				const indexRight = this.items.indexOf(rightPiece, 0);
-				if (indexLeft > -1 && indexRight > -1) {
-					this.items.splice(indexLeft, 1);
-					this.items.splice(indexRight, 1);
+					//add pieces to workbench and activate progressbar
+					benches[0].isLoading = true;
+					benches[0].progressBarTimeStamp = now;
+					benches[0].progressBarVisibility = true;
 				}
-
-				//add pieces to workbench and activate progressbar
-				benches[0].isLoading = true;
-				benches[0].progressBarTimeStamp = now;
-				benches[0].progressBarVisibility = true;
 			}
 		}
-
-
 
 		this.tick++;
 	}

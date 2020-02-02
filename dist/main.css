@@ -222,12 +222,12 @@ progress[value] {
     background-image: url("./assets/icons/100x100-plus1-icon.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 96px;
-    width: 96px;
-    height: 96px;
-    align-self: center;
-    justify-self: center;
-    margin: auto;
+    background-size: 48px;
+    width: 50px;
+    height: 50px;
+    /* align-self: center;
+    justify-self: center; */
+    margin: 10px 10px 0px 10px;
 }
 
 .plus-one-button:hover {
@@ -238,12 +238,12 @@ progress[value] {
     background-image: url("./assets/icons/100x100-sell.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 96px;
-    width: 96px;
-    height: 96px;
-    align-self: center;
-    justify-self: center;
-    margin: auto;
+    background-size: 72px;
+    width: 72px;
+    height: 72px;
+    /* align-self: center;
+    justify-self: center; */
+    margin: 2px 25px 0px 0px;
 }
 
 /* .sell-button:hover {
@@ -366,7 +366,7 @@ progress[value] {
     justify-content: space-evenly;
     align-content: center;
     align-items: center;
-    margin: 15px;
+    margin: 25px 15px 0px 10px;
 }
 .coins {
     width: 50px;
@@ -386,27 +386,27 @@ progress[value] {
 }
 
 .monster-manual-button {
-    background-image: url("./assets/icons/100x100-buy-settings.png");
+    background-image: url("./assets/icons/100x100-catalog-icon.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 96px;
-    width: 100px;
-    height: 100px;
-    margin: 15px;
+    background-size: 48px;
+    width: 50px;
+    height: 50px;
+    margin: 10px 10px 0px 10px;
 }
 
 .monster-manual-button:hover {
-    background-image: url("./assets/icons/100x100-buy-settings-hover.png");
+    background-image: url("./assets/icons/100x100-catalog-icon-hover.png");
 }
 
 .general-upgrade-button {
     background-image: url("./assets/icons/100x100-buy-settings.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 96px;
-    width: 100px;
-    height: 100px;
-    margin: 15px;
+    background-size: 48px;
+    width: 50px;
+    height: 50px;
+    margin: 10px 10px 0px 10px;
 }
 
 .general-upgrade-button:hover {

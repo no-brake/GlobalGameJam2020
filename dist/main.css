@@ -526,3 +526,9 @@ progress[value] {
 
     background-color: rgba(50, 50, 50, 0.5);
 }
+
+.backgroundAudioContainer{
+    position: relative;
+    bottom: 10px;
+    left: 10px;
+}

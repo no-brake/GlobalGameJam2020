@@ -11,9 +11,8 @@ export class ItemCreator extends React.Component<ItemCreatorProps, {}> {
 
     render() {
         return (
-            <div className="action_button"
+            <div className="base-button plus-one-button"
                 onClick={() => this.createPiece()}>
-                <i className="material-icons">plus_one</i>
             </div>
         );
     }

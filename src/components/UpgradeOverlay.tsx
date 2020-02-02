@@ -18,7 +18,6 @@ export class UpgradeOverlay extends React.Component<UpgradeOverlayProps, Upgrade
         return <div className="upgrade-overlay">
             <button className="close-button" onClick={() => this.props.closeHandler()}>Close</button>
             {availableTechs.map(t => <div key={t.name} onClick={() => this.onClick(t.name)}>
-                    <img src="public/assets/icons/100x100-upgrade-icon.png" />
                     <div className="text">{t.name} - {t.cost} Coins</div>
                 </div>)}
         </div>;

@@ -1,16 +1,15 @@
 import * as React from "react"
 import { Game } from "../game/Game"
-import { Timer } from "../game/Timer"
-import { BuildWorkBenchButton } from "./BuildWorkbenchButton";
 import { WorkbenchView } from "./WorkbenchView";
 import { ItemManager } from "./ItemManager";
 import { BackgroundAudio } from "./BackgroundAudio";
 import { CoinView } from "./CoinView"
 import { Trashcan } from "./Trashcan";
 import { ItemCreator } from "./ItemCreator";
+import { MonsterManual } from "./MonsterManual";
 
 export interface GameViewProps { game: Game }
-export interface GameViewState { }
+export interface GameViewState { monsterManualVisible: boolean }
 
 export class GameView extends React.Component<GameViewProps, GameViewState> {
 
@@ -18,6 +17,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         super(props);
 
         this.state = {
+            monsterManualVisible: false
         }
     }
 
@@ -33,12 +33,15 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
     render() {
         const game = this.props.game;
-        // const deltaTime = Timer.deltaTime;
 
         return (
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <div className="spawner"></div>
-                <ItemManager game={this.props.game}></ItemManager>
+                
+                <button style={{height: "30px"}} onClick={() => this.setState({monsterManualVisible: !this.state.monsterManualVisible})}>Repair Manual</button>
+                { this.state.monsterManualVisible ? <MonsterManual game={game} closeHandler={() => this.setState({monsterManualVisible: false})}></MonsterManual> : null }
+                
+                <ItemManager game={game}></ItemManager>
                 <CoinView game={game}></CoinView>
                 <BackgroundAudio></BackgroundAudio>
 

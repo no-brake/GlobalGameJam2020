@@ -27,8 +27,8 @@ export class Game {
 	public workbenchs: Workbench[] = new Array<Workbench>(6);
 	public items: Item[] = [];
 
-	public combinationTracker: {[left: string]: {[right: string]: boolean}};	
-	public newCombinations: {left: string, right: string}[] = [];
+	public combinationTracker: { [left: string]: { [right: string]: boolean } };
+	public newCombinations: { left: string, right: string }[] = [];
 
 	public techs: Tech[] = [];
 
@@ -49,15 +49,15 @@ export class Game {
 
 		// Techs
 		this.techs.push(
-			new Tech("Bigger", 101),
-			new Tech("Faster", 102),
-			new Tech("Better", 103),
-			new Tech("+1", 10),
-			new Tech("+2", 50),
-			new Tech("+3", 150),
-			new Tech("+99", 1000),
+			new Tech("Spawn 1 (+1)", 100),
+			new Tech("Spawn 2 (+1)", 200, ["Spawn 1 (+1)"]),
+			new Tech("Spawn 3 (+2)", 400, ["Spawn 2 (+1)"]),
+			new Tech("Spawn 4 (+5)", 800, ["Spawn 3 (+2)"]),
+			new Tech("2x Money - 1", 10),
+			new Tech("2x Money - 2", 100, ["2x Money - 1"]),
+			new Tech("2x Money - 3", 200, ["2x Money - 2"]),
+			new Tech("2x Money - 4", 500, ["2x Money - 3"]),
 			new Tech("Automate Everything", 2000),
-			new Tech("Do stuff", 1),
 			new Tech("I Win", 21000000),
 		);
 
@@ -102,12 +102,23 @@ export class Game {
 	}
 
 	public addCoins(amount: number) {
-		this.coins += amount;
+		let modfiedAmount = amount;
+
+		// Value modifiers
+		modfiedAmount *= this.isResearched("2x Money - 1") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 2") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 3") ? 2 : 1;
+		modfiedAmount *= this.isResearched("2x Money - 4") ? 2 : 1;
+
+		this.coins += modfiedAmount;
 
 		const offsetX = Math.random() * 200 - 100;
 		const offsetY = Math.random() * 40 - 20;
 		const endOfLife = Date.now() + 5000;
-		this.coinUpdates.push({ amount, offsetX, offsetY, endOfLife });
+		this.coinUpdates.push({ amount: modfiedAmount, offsetX, offsetY, endOfLife });
+
+		var audio = new Audio('public/assets/sounds/buy.wav');
+		audio.play();
 	}
 
 	public gameStart() {
@@ -166,7 +177,7 @@ export class Game {
 
 		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
 			this.combinationTracker[leftItem.name][rightItem.name] = true;
-			this.newCombinations.push({left: leftItem.name, right: rightItem.name});
+			this.newCombinations.push({ left: leftItem.name, right: rightItem.name });
 		}
 
 		this.addCoins(value);
@@ -178,6 +189,15 @@ export class Game {
 		if (this.coins >= tech.cost) {
 			this.coins -= tech.cost;
 			tech.isResearched = true;
+
+			for (const t of this.techs) {
+				const index = t.requirements.indexOf(tech.name);
+				if (index >= 0) {
+					t.requirements.splice(index, 1);
+				}
+
+				t.requirementsFullfilled = t.requirements.length === 0;
+			}
 		}
 	}
 
@@ -219,7 +239,9 @@ export class Game {
 		const now = Date.now();
 
 		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			this.items.push(...this.createItem(1));
+			let spawnAmount = 1;
+
+			this.items.push(...this.createItem(spawnAmount));
 
 			this.lastItemPushed = now;
 		}
@@ -260,7 +282,6 @@ export class Game {
 			}
 		}
 
-
 		if (this.isResearched("Automate Everything")) {
 			const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(i => !i).length >= 2);
 			
@@ -289,8 +310,6 @@ export class Game {
 				}
 			}
 		}
-
-
 
 		this.tick++;
 	}

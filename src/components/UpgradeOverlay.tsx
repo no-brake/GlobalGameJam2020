@@ -13,7 +13,7 @@ export class UpgradeOverlay extends React.Component<UpgradeOverlayProps, Upgrade
     render() {
         const game = this.props.game;
 
-        const availableTechs = game.techs.filter(t => !t.isResearched);
+        const availableTechs = game.techs.filter(t => !t.isResearched && t.requirementsFullfilled);
 
         return <div className="upgrade-overlay">
             <button className="close-button" onClick={() => this.props.closeHandler()}>Close</button>

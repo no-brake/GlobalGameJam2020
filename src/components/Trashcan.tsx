@@ -30,7 +30,7 @@ export class Trashcan extends React.Component<TrashcanProps, {}> {
     }
 
     render() {
-        return <div className="base-button sell-button"
+        return <div className="dropbox sell-button"
                 onDrop={e => this.onDrop(e)}
                 onDragOver={this.onDragOver}
                 onDragEnter={this.onDragEnter}

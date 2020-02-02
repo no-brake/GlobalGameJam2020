@@ -53,7 +53,7 @@ body {
 } */
 
 .workbench-table {
-    border: 3px solid rgba(1, 212, 231, 1);
+    /* border: 3px solid rgba(1, 212, 231, 1); */
     align-items: center;
     justify-items: center;
     align-content: center;
@@ -62,7 +62,7 @@ body {
 }
 
 .workbench-table td {
-    border: 3px solid rgba(1, 212, 231, 1);
+    border: 5px solid rgba(1, 212, 231, 1);
     /* padding: 8px; */
     align-items: center;
     justify-items: center;
@@ -132,6 +132,20 @@ body {
     background-color: lightgray;
 }
 
+.progressbar {
+    position: relative;
+    width: 150px;
+    height: 20px;
+    top: 42px;
+}
+
+.progressbar-placeholder {
+    position: relative;
+    top: 75px;
+    width: 150px;
+    height: 20px;
+}
+
 progress {
     border: 1px solid black;
     height: 20px;
@@ -185,18 +199,6 @@ progress[value] {
     background-size: 35px 20px, 100% 100%, 100% 100%;
 } */
 
-.progressbar {
-    position: relative;
-    top: 75px;
-}
-
-.progressbar-placeholder {
-    position: relative;
-    top: 75px;
-    width: 175px;
-    height: 20px;
-}
-
 .build-workbench-button {
     background-image: url("./assets/icons/100x100-buy-icon.png");
     background-repeat: no-repeat;
@@ -241,9 +243,9 @@ progress[value] {
     margin: auto;
 }
 
-.sell-button:hover {
+/* .sell-button:hover {
     background-image: url("./assets/icons/100x100-sell-hover.png");
-}
+} */
 
 
 .upgrade-workbench-button {
@@ -307,6 +309,20 @@ progress[value] {
     color: transparent;
 }
 
+.dropbox {
+	background-color: rgba(0, 0, 0, 0.3);
+	border: 5px dashed rgba(1, 212, 231, 1);
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	height: 75px;
+	padding: 20px;
+    width: 75px;
+}
+
+.drag-over {
+    border: 5px dashed orange;
+}
+
 .item {
     position: absolute;
     display: block;
@@ -334,10 +350,12 @@ progress[value] {
 
 .workbench {
     position: relative;
+    border: 5px dashed rgba(1, 212, 231, 1);
 }
 
-.drag-over {
-    outline: 5px dashed orange;
+.workbench-drag-over {
+    position: relative;
+    border: 5px dashed orange;
 }
 
 .coins {

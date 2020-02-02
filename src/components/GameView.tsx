@@ -6,10 +6,11 @@ import { BackgroundAudio } from "./BackgroundAudio";
 import { CoinView } from "./CoinView"
 import { Trashcan } from "./Trashcan";
 import { ItemCreator } from "./ItemCreator";
-import { MonsterManual } from "./MonsterManual";
+import { MonsterManual } from "./MonsterManual"
+import { UpgradeOverlay } from "./UpgradeOverlay";
 
 export interface GameViewProps { game: Game }
-export interface GameViewState { monsterManualVisible: boolean }
+export interface GameViewState { monsterManualVisible: boolean, upgradeOverlayVisible: boolean }
 
 export class GameView extends React.Component<GameViewProps, GameViewState> {
 
@@ -17,8 +18,27 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         super(props);
 
         this.state = {
-            monsterManualVisible: false
+            monsterManualVisible: false,
+            upgradeOverlayVisible: false
         }
+    }
+
+    showOverlay(overlay: string) {
+        const state = {
+            monsterManualVisible: false,
+            upgradeOverlayVisible: false
+        }
+
+        switch (overlay) {
+            case "upgrade":
+                state.upgradeOverlayVisible = !this.state.upgradeOverlayVisible;
+                break;
+            case "monster":
+                state.monsterManualVisible = !this.state.monsterManualVisible;
+                break;
+        }
+
+        this.setState(state);
     }
 
     componentDidMount() {
@@ -26,7 +46,6 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
     }
 
     backgroundMove(e: React.MouseEvent<HTMLDivElement>) {
-
         e.currentTarget.style.backgroundPositionX = 0.1 * -e.clientX + "px";
         e.currentTarget.style.backgroundPositionY = 0.1 * -e.clientY + "px";
     }
@@ -38,9 +57,12 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <div className="spawner"></div>
                 
-                <button style={{height: "30px"}} onClick={() => this.setState({monsterManualVisible: !this.state.monsterManualVisible})}>Catalogue</button>
-                { this.state.monsterManualVisible ? <MonsterManual game={game} closeHandler={() => this.setState({monsterManualVisible: false})}></MonsterManual> : null }
-                
+                <button style={{height: "30px"}} onClick={() => this.showOverlay("monster")}>Catalogue</button>
+                { this.state.monsterManualVisible ? <MonsterManual game={game} closeHandler={() => this.showOverlay("monster")}></MonsterManual> : null }
+
+                <button style={{height: "30px"}} onClick={() => this.showOverlay("upgrade")}>Upgrades</button>
+                { this.state.upgradeOverlayVisible ? <UpgradeOverlay game={game} closeHandler={() => this.showOverlay("upgrade")}></UpgradeOverlay> : null }
+
                 <ItemManager game={game}></ItemManager>
                 <CoinView game={game}></CoinView>
                 <BackgroundAudio></BackgroundAudio>

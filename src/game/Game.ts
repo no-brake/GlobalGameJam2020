@@ -146,7 +146,7 @@ export class Game {
 		if (!this.combinationTracker[leftItem.name]) {
 			this.combinationTracker[leftItem.name] = {};
 		}
-		
+
 		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
 			this.combinationTracker[leftItem.name][rightItem.name] = true;
 			this.newCombinations.push({left: leftItem.name, right: rightItem.name});
@@ -231,7 +231,8 @@ export class Game {
 			}
 		}
 
-		const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(Boolean).length >= 2);
+		const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(i => !i).length >= 2);
+		
 		if (benches.length > 0) {
 			const left = this.items.filter(item => item.partType === "left" && !item.isDragging);
 			const right = this.items.filter(item => item.partType === "right" && !item.isDragging);

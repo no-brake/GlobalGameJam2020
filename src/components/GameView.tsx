@@ -38,7 +38,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <div className="spawner"></div>
                 
-                <button style={{height: "30px"}} onClick={() => this.setState({monsterManualVisible: !this.state.monsterManualVisible})}>Repair Manual</button>
+                <button style={{height: "30px"}} onClick={() => this.setState({monsterManualVisible: !this.state.monsterManualVisible})}>Catalogue</button>
                 { this.state.monsterManualVisible ? <MonsterManual game={game} closeHandler={() => this.setState({monsterManualVisible: false})}></MonsterManual> : null }
                 
                 <ItemManager game={game}></ItemManager>

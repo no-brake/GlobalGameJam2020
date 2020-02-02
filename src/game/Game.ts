@@ -27,8 +27,8 @@ export class Game {
 	public workbenchs: Workbench[] = new Array<Workbench>(6);
 	public items: Item[] = [];
 
-	public combinationTracker: {[left: string]: {[right: string]: boolean}};	
-	public newCombinations: {left: string, right: string}[] = [];
+	public combinationTracker: { [left: string]: { [right: string]: boolean } };
+	public newCombinations: { left: string, right: string }[] = [];
 
 	public techs: Tech[] = [];
 
@@ -108,6 +108,9 @@ export class Game {
 		const offsetY = Math.random() * 40 - 20;
 		const endOfLife = Date.now() + 5000;
 		this.coinUpdates.push({ amount, offsetX, offsetY, endOfLife });
+
+		var audio = new Audio('public/assets/sounds/buy.wav');
+		audio.play();
 	}
 
 	public gameStart() {
@@ -166,7 +169,7 @@ export class Game {
 
 		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
 			this.combinationTracker[leftItem.name][rightItem.name] = true;
-			this.newCombinations.push({left: leftItem.name, right: rightItem.name});
+			this.newCombinations.push({ left: leftItem.name, right: rightItem.name });
 		}
 
 		this.addCoins(value);
@@ -257,7 +260,7 @@ export class Game {
 		}
 
 		const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(i => !i).length >= 2);
-		
+
 		if (benches.length > 0) {
 			const left = this.items.filter(item => item.partType === "left" && !item.isDragging);
 			const right = this.items.filter(item => item.partType === "right" && !item.isDragging);

@@ -13,7 +13,7 @@ export class UpgradeOverlay extends React.Component<UpgradeOverlayProps, Upgrade
 
         return <div className="upgrade-overlay">
             <button className="close-button" onClick={() => this.props.closeHandler()}>Close</button>
-            {upgrades.map(u => <div key={u}><img src="public/assets/icons/100x100-upgrade-icon.png" /><div className="text">{u}</div></div>)}
+            {upgrades.map(u => <div key={u}><div className="text">{u}</div></div>)}
         </div>;
     }
 }

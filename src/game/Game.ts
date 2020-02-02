@@ -145,8 +145,8 @@ export class Game {
 		const value = combinationLookup[leftItem.name][rightItem.name];
 		if (!this.combinationTracker[leftItem.name]) {
 			this.combinationTracker[leftItem.name] = {};
-
 		}
+		
 		if (!this.combinationTracker[leftItem.name][rightItem.name]) {
 			this.combinationTracker[leftItem.name][rightItem.name] = true;
 			this.newCombinations.push({left: leftItem.name, right: rightItem.name});
@@ -225,15 +225,16 @@ export class Game {
 		for (let i = this.items.length - 1; i >= 0; i--) {
 			if (this.items[i].posY > 1000 || this.items[i].posX > 1500) {
 				this.items.splice(i, 1);
-			} else {
+			}
+			else {
 				this.move(this.items[i]);
 			}
 		}
 
-		const benches = this.workbenchs.filter((obj) => obj.level > 0 && obj.items.filter(i => i == null).length == 2);
+		const benches = this.workbenchs.filter(wb => wb.automaticOperation && wb.level > 0 && wb.items.filter(Boolean).length >= 2);
 		if (benches.length > 0) {
-			const left = this.items.filter((obj) => obj.partType === "left" && !obj.isDragging);
-			const right = this.items.filter((obj) => obj.partType === "right" && !obj.isDragging);
+			const left = this.items.filter(item => item.partType === "left" && !item.isDragging);
+			const right = this.items.filter(item => item.partType === "right" && !item.isDragging);
 
 			if (Math.min(left.length, right.length) > 0) {
 				//get first element available of each piece an workbench

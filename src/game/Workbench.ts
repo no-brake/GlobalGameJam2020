@@ -16,6 +16,8 @@ export class Workbench {
     public itemPartTypes: string[];
     public canRepair: boolean;
 
+    public automaticOperation: boolean;
+
     public constructor(game: Game) {
         this.level = 0;
         this.type = "wooden";
@@ -29,6 +31,8 @@ export class Workbench {
         this.itemPartTypes = ["left", "right"];
         this.items = new Array(this.itemPartTypes.length).fill(undefined);
         this.canRepair = false;
+
+        this.automaticOperation = true;
     }
 
     public addItem(itemIndex: number) {

@@ -14,9 +14,11 @@ export class Item {
     public image: string;
 
     public rotationSpeed: number;
-    public rotationDirection: string;
+    public rotationDirection: number;
 
-    constructor(name: string, posX: number, posY: number, partType: string = "left", image: string = "", rotationSpeed:number = 30, rotationDirection:string = "normal"){
+    public angle: number;
+
+    constructor(name: string, posX: number, posY: number, partType: string = "left", image: string = "", rotationSpeed:number = 30, rotationDirection:number){
         this.name = name;
         this.posX = posX;
         this.posY = posY;
@@ -30,5 +32,7 @@ export class Item {
 
         this.rotationDirection = rotationDirection;
         this.rotationSpeed = rotationSpeed;
+
+        this.angle = 0;
     }
 }

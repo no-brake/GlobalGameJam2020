@@ -38,15 +38,9 @@ body {
 .spawner {
     animation: rotation 50s infinite linear;
     position: absolute;
-<<<<<<< HEAD
-    top: -350px;
-    left: -850px;
-    background-image: url("./assets/background/gg20-spawn-img-2x.png");
-=======
     top: -224px;
     left: -250px;
     background-image: url(./assets/background/gg20-spawn-img-2x.png);
->>>>>>> c55e05ad9c4f2b85bfcca8bc7b66479576263a12
     background-position: center;
     height: 488px;
     width: 500px;

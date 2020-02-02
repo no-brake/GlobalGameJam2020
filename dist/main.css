@@ -198,7 +198,7 @@ progress[value] {
 }
 
 .build-workbench-button {
-    background-image: url("./assets/icons/plus.png");
+    background-image: url("./assets/icons/100x100-buy-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -210,11 +210,11 @@ progress[value] {
 }
 
 .build-workbench-button:hover {
-    background-image: url("./assets/icons/plus_hover.png");
+    background-image: url("./assets/icons/100x100-buy-icon-hover.png");
 }
 
 .plus-one-button {
-    background-image: url("./assets/icons/50x50-plusone-icon.png");
+    background-image: url("./assets/icons/100x100-plus1-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -226,11 +226,11 @@ progress[value] {
 }
 
 .plus-one-button:hover {
-    background-image: url("./assets/icons/50x50-plusone-icon-hover.png");
+    background-image: url("./assets/icons/100x100-plus1-hover.png");
 }
 
 .sell-button {
-    background-image: url("./assets/icons/50x50-sell-icon.png");
+    background-image: url("./assets/icons/100x100-sell.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 96px;
@@ -242,12 +242,12 @@ progress[value] {
 }
 
 .sell-button:hover {
-    background-image: url("./assets/icons/50x50-sell-icon-hover.png");
+    background-image: url("./assets/icons/100x100-sell-hover.png");
 }
 
 
 .upgrade-workbench-button {
-    background-image: url("./assets/icons/up.png");
+    background-image: url("./assets/icons/100x100-upgrade-icon.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 48px;
@@ -258,11 +258,11 @@ progress[value] {
 }
 
 .upgrade-workbench-button:hover {
-    background-image: url("./assets/icons/up_hover.png");
+    background-image: url("./assets/icons/100x100-upgrade-icon-hover.png");
 }
 
 .repair-button {
-    background-image: url("./assets/icons/repair.png");
+    background-image: url("./assets/icons/100x100-wrench-icon.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 48px;
@@ -273,7 +273,7 @@ progress[value] {
 }
 
 .repair-button:hover:enabled {
-    background-image: url("./assets/icons/repair_hover.png");
+    background-image: url("./assets/icons/100x100-wrench-icon-hover.png");
 }
 
 .repair-button:disabled, button[disabled] {

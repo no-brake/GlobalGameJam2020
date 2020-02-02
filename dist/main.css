@@ -385,12 +385,41 @@ progress[value] {
     color: white;
 }
 
+.monster-manual-button {
+    background-image: url("./assets/icons/100x100-buy-settings.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.monster-manual-button:hover {
+    background-image: url("./assets/icons/100x100-buy-settings-hover.png");
+}
+
+.general-upgrade-button {
+    background-image: url("./assets/icons/100x100-buy-settings.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 96px;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+}
+
+.general-upgrade-button:hover {
+    background-image: url("./assets/icons/100x100-buy-settings-hover.png");
+}
+
 .action_button_container {
-    position: absolute;
-    width: 320px;
-    height: 160px;
-    top: 60px;
-    right: 580px;
+    /* position: absolute; */
+    /* width: 320px;
+    height: 160px; */
+    /* top: 60px;
+    right: 580px; */
+    margin: 15px;
     display: flex;
 }
 

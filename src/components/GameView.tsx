@@ -56,21 +56,23 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
         return (
             <div className="game-view" onMouseMove={(e) => this.backgroundMove(e)} id="game-view">
                 <div className="spawner"></div>
-                
-                <button style={{height: "30px"}} onClick={() => this.showOverlay("monster")}>Catalogue</button>
+                <div className="action_button_container">
+                <Trashcan game={game}></Trashcan>
+                <ItemCreator game={game}></ItemCreator>
+                <button className="base-button monster-manual-button" onClick={() => this.showOverlay("monster")}></button>
                 { this.state.monsterManualVisible ? <MonsterManual game={game} closeHandler={() => this.showOverlay("monster")}></MonsterManual> : null }
 
-                <button style={{height: "30px"}} onClick={() => this.showOverlay("upgrade")}>Upgrades</button>
+                <button className="base-button general-upgrade-button" onClick={() => this.showOverlay("upgrade")}></button>
                 { this.state.upgradeOverlayVisible ? <UpgradeOverlay game={game} closeHandler={() => this.showOverlay("upgrade")}></UpgradeOverlay> : null }
+                </div>
+                <CoinView game={game}></CoinView>
+
 
                 <ItemManager game={game}></ItemManager>
-                <CoinView game={game}></CoinView>
+                
+
                 <BackgroundAudio></BackgroundAudio>
 
-                <div className="action_button_container">
-                    <ItemCreator game={game}></ItemCreator>
-                    <Trashcan game={game}></Trashcan>
-                </div>
 
                 <div className="workbench-area">
                     <table className="workbench-table">

@@ -6,14 +6,21 @@ export interface UpgradeOverlayState { }
 
 export class UpgradeOverlay extends React.Component<UpgradeOverlayProps, UpgradeOverlayState> {
 
+    onClick(name: string) {
+        this.props.game.buyGlobalUpgrade(name);
+    }
+
     render() {
         const game = this.props.game;
 
-        const upgrades = ["Bigger", "Faster", "Better", "+1", "+2", "+3", "+99", "Automate Everything", "Do stuff", "I Win"]
+        const availableTechs = game.techs.filter(t => !t.isResearched);
 
         return <div className="upgrade-overlay">
             <button className="close-button" onClick={() => this.props.closeHandler()}>Close</button>
-            {upgrades.map(u => <div key={u}><div className="text">{u}</div></div>)}
+            {availableTechs.map(t => <div key={t.name} onClick={() => this.onClick(t.name)}>
+                    <img src="public/assets/icons/100x100-upgrade-icon.png" />
+                    <div className="text">{t.name} - {t.cost} Coins</div>
+                </div>)}
         </div>;
     }
 }

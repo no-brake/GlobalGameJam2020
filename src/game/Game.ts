@@ -2,6 +2,7 @@ import { Timer } from "./Timer";
 import { Workbench } from "./Workbench";
 import { Item } from "./Item";
 import { combinationLookup } from "./CombinationLookupTable";
+import { Tech } from "./Tech";
 
 interface SaveState {
 	tick: number;
@@ -29,6 +30,8 @@ export class Game {
 	public combinationTracker: {[left: string]: {[right: string]: boolean}};	
 	public newCombinations: {left: string, right: string}[] = [];
 
+	public techs: Tech[] = [];
+
 	public constructor() {
 		for (let i = 0; i < this.workbenchs.length; i++) {
 			this.workbenchs[i] = new Workbench(this);
@@ -44,8 +47,21 @@ export class Game {
 
 		this.combinationTracker = {};
 
-		this.pause = false;
+		// Techs
+		this.techs.push(
+			new Tech("Bigger", 101),
+			new Tech("Faster", 102),
+			new Tech("Better", 103),
+			new Tech("+1", 10),
+			new Tech("+2", 50),
+			new Tech("+3", 150),
+			new Tech("+99", 1000),
+			new Tech("Automate Everything", 2000),
+			new Tech("Do stuff", 1),
+			new Tech("I Win", 21000000),
+		);
 
+		this.pause = false;
 		this.tick = 0;
 
 		this.gameStart();
@@ -154,6 +170,15 @@ export class Game {
 		}
 
 		this.addCoins(value);
+	}
+
+	public buyGlobalUpgrade(name: string) {
+		const tech = this.techs.filter(t => t.name === name)[0];
+
+		if (this.coins >= tech.cost) {
+			this.coins -= tech.cost;
+			tech.isResearched = true;
+		}
 	}
 
 	public randomNumber(min: number, max: number) {

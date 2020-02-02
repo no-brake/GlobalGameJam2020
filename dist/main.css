@@ -19,7 +19,7 @@ body {
     min-height: 100vh;
     display: flex;
     background-repeat: no-repeat;
-    background-image: url(./assets/background/gg20-links-bg.png);
+    background-image: url("./assets/background/gg20-links-bg.png");
     background-size: auto;
     background-position: bottom;
     justify-content: flex-end;
@@ -40,7 +40,7 @@ body {
     position: absolute;
     top: -350px;
     left: -850px;
-    background-image: url(./assets/background/gg20-spawn-img-2x.png);
+    background-image: url("./assets/background/gg20-spawn-img-2x.png");
     background-position: center;
     height: 100%;
     width: 100%;
@@ -72,7 +72,7 @@ body {
     margin: auto;
     width: 250px;
     height: 250px;
-    background-image: url(./assets/items/400x400-workbench-background.png);
+    background-image: url("./assets/items/400x400-workbench-background.png");
     background-repeat: repeat;
     background-size: contain;
 }
@@ -133,6 +133,14 @@ body {
 
 .base-button:disabled {
     background-color: lightgray;
+}
+
+.base-button:focus {
+    padding: 0px;
+    border: 0px solid transparent;
+    outline: 0;
+    background-color: transparent;
+    color: black;
 }
 
 .progressbar {
@@ -698,6 +706,16 @@ progress[value] {
 
 .backgroundAudioContainer{
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 2px;
+    left: 2px;
+}
+
+.credits-icon {
+    background-size: 30x;
+    width: 35px;
+    height: 35x;
+    margin: 10px;
 }

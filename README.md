@@ -16,3 +16,5 @@ Compile source code
 
 Run
 `node index.js`
+
+Have Fun!

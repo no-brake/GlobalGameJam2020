@@ -49,19 +49,15 @@ export class Game {
 
 		// Techs
 		this.techs.push(
-			new Tech("Bigger", 101),
-			new Tech("Faster", 102),
-			new Tech("Better", 103),
+			new Tech("Spawn 1 (+1)", 100),
+			new Tech("Spawn 2 (+1)", 200, ["Spawn 1 (+1)"]),
+			new Tech("Spawn 3 (+2)", 400, ["Spawn 2 (+1)"]),
+			new Tech("Spawn 4 (+5)", 800, ["Spawn 3 (+2)"]),
 			new Tech("2x Money - 1", 10),
 			new Tech("2x Money - 2", 100, ["2x Money - 1"]),
 			new Tech("2x Money - 3", 200, ["2x Money - 2"]),
 			new Tech("2x Money - 4", 500, ["2x Money - 3"]),
-			new Tech("+1", 10),
-			new Tech("+2", 50),
-			new Tech("+3", 150),
-			new Tech("+99", 1000),
 			new Tech("Automate Everything", 2000),
-			new Tech("Do stuff", 1),
 			new Tech("I Win", 21000000),
 		);
 
@@ -196,7 +192,7 @@ export class Game {
 
 			for (const t of this.techs) {
 				const index = t.requirements.indexOf(tech.name);
-				if (index < 0) {
+				if (index >= 0) {
 					t.requirements.splice(index, 1);
 				}
 
@@ -243,7 +239,9 @@ export class Game {
 		const now = Date.now();
 
 		if (now - this.lastItemPushed > 2000 && this.items.length < this.maxItems) {
-			this.items.push(...this.createItem(1));
+			let spawnAmount = 1;
+
+			this.items.push(...this.createItem(spawnAmount));
 
 			this.lastItemPushed = now;
 		}

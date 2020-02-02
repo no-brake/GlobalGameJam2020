@@ -19,7 +19,7 @@ export class GameView extends React.Component<GameViewProps, GameViewState> {
 
         this.state = {
             monsterManualVisible: false,
-            upgradeOverlayVisible: true
+            upgradeOverlayVisible: false
         }
     }
 

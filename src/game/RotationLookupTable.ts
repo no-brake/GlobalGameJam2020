@@ -5,8 +5,8 @@ export const rotationLookup: {
     }
 } = {
     "banane": { //L109x54 R89x103
-        "left": {x: 95.5,y: 123},
-        "right": {x: 44.5, y: 98.5}
+        "left": {x: 95.5, y: 75},   //150-(109/2)
+        "right": {x: 44.5, y: 75}   //89/2
     },
     "bear": { //L120x147 R79x145
         "left": {x: 75, y: 75},
